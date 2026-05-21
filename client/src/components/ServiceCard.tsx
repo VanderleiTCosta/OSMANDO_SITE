@@ -1,63 +1,82 @@
-import WhatsAppIcon from "./ui/WhatsAppIcon";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import React, { useMemo } from "react";
+import { Link } from "wouter";
+import { ArrowRight } from "lucide-react";
 
 interface ServiceCardProps {
   image: string;
   title: string;
   description: string;
-  whatsappText: string;
+  whatsappText?: string; 
+  slug?: string;
 }
 
-export default function ServiceCard({
+const ServiceCard: React.FC<ServiceCardProps> = ({
   image,
   title,
   description,
-  whatsappText,
-}: ServiceCardProps) {
-  const whatsappLink = `https://wa.me/5511948202927?text=${encodeURIComponent(whatsappText)}`;
+  slug,
+}) => {
+  // Gera URL amigável automaticamente para garantir um roteamento SEO-friendly
+  const urlSlug = useMemo(() => {
+    if (slug) return slug;
+    return title
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9\s-]/g, "")
+      .trim()
+      .replace(/\s+/g, "-");
+  }, [title, slug]);
 
   return (
-    <motion.div 
-      whileHover={{ y: -8 }}
-      className="group overflow-hidden rounded-xl bg-white border border-border hover:shadow-2xl transition-all duration-300 flex flex-col h-full"
-    >
-      {/* Image */}
-      <div className="relative h-56 overflow-hidden bg-gray-100">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          loading="lazy"
-          width="400"
-          height="224"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
-        <div className="absolute bottom-4 left-4">
-          <span className="bg-secondary text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">
-            Serviço 24h
-          </span>
-        </div>
-      </div>
+    <Link href={`/solucoes/${urlSlug}`}>
+      {/* O elemento <a> engloba tudo, garantindo 100% de área clicável. A tag é válida no HTML5 para elementos em bloco. */}
+      <a 
+        className="block h-full focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-xl rounded-b-xl"
+        aria-label={`Ver detalhes sobre a solução de ${title}`}
+      >
+        <article 
+          className="group overflow-hidden rounded-xl bg-white border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col h-full"
+        >
+          {/* Imagem com Lazy Loading Nativo, Aspect Ratio e aceleração de GPU (will-change-transform) */}
+          <figure className="relative h-56 overflow-hidden bg-gray-100 m-0">
+            <img
+              src={image}
+              alt={`Detalhes do serviço de ${title}`}
+              className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500 will-change-transform"
+              loading="lazy"
+              width="400"
+              height="224"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80" />
+            <figcaption className="absolute bottom-4 left-4">
+              <span className="bg-primary text-white text-[10px] font-extrabold px-3 py-1.5 rounded uppercase tracking-widest shadow-sm">
+                Plantão 24h
+              </span>
+            </figcaption>
+          </figure>
 
-      {/* Content */}
-      <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">{title}</h3>
-        <p className="text-muted-foreground text-sm mb-6 leading-relaxed flex-grow">
-          {description}
-        </p>
+          <div className="p-6 flex flex-col flex-grow">
+            <header>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors">
+                {title}
+              </h3>
+            </header>
+            
+            <p className="text-gray-600 text-sm mb-6 leading-relaxed flex-grow">
+              {description}
+            </p>
 
-        {/* CTA */}
-        <a href={whatsappLink} className="mt-auto">
-          <Button
-            className="w-full bg-success hover:bg-success/90 text-white font-bold flex items-center justify-center gap-2 h-11"
-            size="sm"
-          >
-            <WhatsAppIcon size={20} /> Orçamento no WhatsApp
-          </Button>
-        </a>
-      </div>
-    </motion.div>
+            {/* CTA "Saiba Mais" Limpo e Animado */}
+            <div className="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between text-primary font-bold group-hover:text-primary-dark transition-colors">
+              <span className="text-sm tracking-wide uppercase">Saiba mais</span>
+              <ArrowRight className="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300" />
+            </div>
+          </div>
+        </article>
+      </a>
+    </Link>
   );
-}
+};
 
+export default React.memo(ServiceCard);
