@@ -1,0 +1,35 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [],
+  "dev_command": "pnpm run dev",
+  "env_vars": {},
+  "experiments": null,
+  "git_remote": {
+    "repo_url": "s3://vida-prod-gitrepo/webdev-git/310519663060650935/K9o8LWiVmPpHSveFtHmbjC",
+    "access_key_id": "ASIAZV3A2ECZMJGAMVSN",
+    "secret_access_key": "tzHX0ySnb0J3yBFrn/Jl2ZjrT2qO9O+EdpBfXByI",
+    "session_token": "IQoJb3JpZ2luX2VjECwaCXVzLWVhc3QtMSJHMEUCIHMDabItlPz/wU7LcpX7xAxmHsU74AjNX3AtcWBl88ntAiEA2vtUOrrJ/VusYAODVEQeWRf82NDFG8TzGH/oTwm1xMkq/wMI9P//////////ARAEGgw2NjUzODYwOTg4NjYiDLLC9sMFpdAMdkGJ5yrTA+UXTCFbbeHCXPfhF32y0E7EO9lEdY3odjMz0ZgX7GmPaRG6XbGHOCCQi11HvTRZqX/6YN4MV3xhew5tdh7ExsvAdzDwoFRWVl+QKOvSkxBl5yul+ALubUYgWkJebXSQXfEL/rtUf0Cu8C0cBpAapk4smn5NLax7THLZmnhfookPtLZVx8cv66x5/pauW/ehI1W/sRA6sz7/IfJQpTF0NKeMbRrOWq2BEhDtZC6bsbpnH9PjjMecq5UGAd5sUBuWLbFqHXwf5ml0pljzK/VuHqB8LCjD0s7oqOpBiKEwPnWXMmaWPBSiFvyUaBSMMWLVBvFagZF13IZfZoQq4+WUnZqHzuvfxzRQ0GnwybF+CvS63af2dHgmLsR8z1jxKOA0Jwr11nDLwx9U3C9yHjS9BtSX/Kq51xd4JrPBH12rbHyOijHCULr2JFWWLMSNwMAjnxK0FxZKju1Gk/F/eIoLFovAfdgOzrG3aQ04Or0m2VL6Vo6zmenzeTAnoesIL4FCsClvKXgvONMSHFGtzLs0kN6EaitF5poe20Jc4gpPkzDpdMMS49ds8OlXEZF07buhqaSSM5oOoX4QsVAIXFYUT7UYlfOBHQ4oJ7RX49ws7sT73LX/MOmMuNAGOp0BoM3kkd4tI5wPKUKwDfINIiqv1vD4FLvullHD3XxIajlL23m9Gj0YyNaJRG8ftOudTuEWVkW5Xw0X+Y2Rc03hnSVmie1VweD3jfZXVjpocsgzr32reTKWjsbX/4uhICzbHq9wLOQMUnymYrxGufBXyXVLc6Mg4uBbeLTf2Sm+tLLZOQJFcXA2ISwqTxoMHa1bOkGp7j0O1i3a99FUGA==",
+    "expiration": "2026-05-21T07:07:21.000Z"
+  },
+  "name": "PROTEC",
+  "path": "/home/ubuntu/PROTEC",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "b8UuGEStYkVHqEXNMJA84i",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "ePWUdN3Bwz8B3JfmzrLmwe",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "Vanderlei Costa",
+    "OWNER_OPEN_ID": "ZTa6NmetgSQKoAdnQJU7F9",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "98756083-a002-4028-b986-5ad58385bb6e",
+    "VITE_APP_ID": "K9o8LWiVmPpHSveFtHmbjC",
+    "VITE_APP_LOGO": "",
+    "VITE_APP_TITLE": "Desentupidora PROTEC - Moderna \u0026 Responsiva",
+    "VITE_FRONTEND_FORGE_API_KEY": "EZyxK579vpit44sBVaXqig",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-static",
+  "test_command": "pnpm test"
+}
