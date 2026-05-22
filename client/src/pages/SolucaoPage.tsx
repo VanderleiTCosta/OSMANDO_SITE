@@ -210,16 +210,28 @@ const SolucaoPage: React.FC = () => {
                     >
                       <Button
                         size="lg"
-                        className="bg-success hover:bg-success/90 text-white font-bold flex items-center justify-center gap-2 h-14 px-8 text-lg shadow-lg shadow-success/20"
+                        variant="outline"
+                        className="bg-success hover:bg-success/90 text-white font-bold flex items-center justify-center gap-2 h-14 px-8 text-lg shadow-lg shadow-success/20 hover:scale-105 transition-transform"
                       >
-                        <WhatsAppIcon size={24} /> WhatsApp 24h
+                        <WhatsAppIcon className="w-4 h-4 mr-2" /> WhatsApp 24h
+                      </Button>
+                    </a>
+                    <a>
+                      <Button
+                        onClick={handleOpenModal}
+                        variant="outline"
+                        size="lg"
+                        className="bg-success hover:bg-success/90 text-white font-bold flex items-center justify-center gap-2 h-14 px-8 text-lg shadow-lg shadow-success/20 hover:scale-105 transition-transform"
+                      >
+                        <MapPin className="w-4 h-4 mr-2" />
+                        Escolher Bairro
                       </Button>
                     </a>
                     <a href="tel:+5511948202927">
                       <Button
                         size="lg"
                         variant="outline"
-                        className="border-white text-white hover:bg-white hover:text-primary transition-all duration-300 h-14 px-8 text-lg"
+                        className="bg-success hover:bg-success/90 text-white font-bold flex items-center justify-center gap-2 h-14 px-8 text-lg shadow-lg shadow-success/20 hover:scale-105 transition-transform"
                       >
                         📞 Ligar Agora
                       </Button>

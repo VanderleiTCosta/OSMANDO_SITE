@@ -328,7 +328,8 @@ export default function Home() {
             <a href="https://wa.me/5511948202927">
               <Button
                 size="lg"
-                className="bg-success hover:bg-success/90 text-white font-bold flex items-center gap-2 h-14 px-10 text-lg shadow-xl shadow-black/20"
+                variant="outline"
+                className="w-full border-white bg-success hover:bg-success/90 text-white font-bold flex items-center justify-center gap-2 h-14 text-lg shadow-lg shadow-success/20 hover:bg-white hover:text-primary transition-all duration-300"
               >
                 <WhatsAppIcon size={24} /> Começar pelo WhatsApp
               </Button>
@@ -401,7 +402,8 @@ export default function Home() {
                 <a href="https://wa.me/5511948202927" className="w-full sm:w-auto">
                   <Button
                     size="lg"
-                    className="w-full bg-success hover:bg-success/90 flex items-center justify-center gap-2 h-14 px-8 font-bold"
+                    variant="outline"
+                    className="w-full border-primary bg-success hover:bg-success/90 text-primary font-bold flex items-center justify-center gap-2 h-14 text-lg shadow-lg shadow-success/20 hover:bg-white hover:text-primary transition-all duration-300"
                   >
                     <WhatsAppIcon size={20} /> Orçamento Grátis
                   </Button>
