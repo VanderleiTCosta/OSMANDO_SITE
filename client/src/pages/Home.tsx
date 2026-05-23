@@ -289,7 +289,7 @@ export default function Home() {
       {/* Como Funciona Section - Versão Premium */}
       <section
         id="como-funciona"
-        className="relative py-16 sm:py-20 md:py-28 lg:py-36 bg-primary text-white overflow-hidden"
+        className="relative py-16 sm:py-20 md:py-28 lg:py-36 bg-card/40 backdrop-blur-sm border-y border-border text-white overflow-hidden"
       >
         {/* Elementos decorativos de fundo */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-secondary/20 via-transparent to-transparent" />
@@ -302,7 +302,7 @@ export default function Home() {
             {...fadeIn}
             className="text-center mb-12 sm:mb-16 md:mb-20"
           >
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+            <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm border border-primary/30 px-4 py-2 rounded-full mb-6">
               <span className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
               <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white/90">
                 Metodologia Exclusiva
@@ -382,7 +382,7 @@ export default function Home() {
                   className="group relative"
                 >
                   {/* Card com efeito glassmorphism */}
-                  <div className="relative h-full p-6 sm:p-7 md:p-8 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-500 hover:transform hover:-translate-y-2">
+                  <div className="relative h-full p-6 sm:p-7 md:p-8 rounded-2xl bg-card/60 backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-500 hover:transform hover:-translate-y-2">
                     {/* Número do passo flutuante */}
                     <div className="absolute -top-3 -right-3 w-12 h-12 rounded-full bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-lg">
                       <span className="text-white font-black text-sm sm:text-base">
@@ -680,14 +680,14 @@ export default function Home() {
       {/* Depoimentos Section */}
       <section
         id="depoimentos"
-        className="py-12 sm:py-16 md:py-20 lg:py-32 bg-muted/30"
+        className="py-12 sm:py-16 md:py-20 lg:py-32 bg-card/20 backdrop-blur-sm border-b border-border"
       >
         <div className="container px-4 sm:px-6">
           <motion.div
             {...fadeIn}
             className="text-center mb-8 sm:mb-12 md:mb-16"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-card-foreground mb-3 sm:mb-4">
               Satisfação Garantida
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground px-2">
@@ -702,7 +702,7 @@ export default function Home() {
                   </span>
                 ))}
               </div>
-              <span className="ml-2 sm:ml-3 text-base sm:text-xl font-black text-foreground">
+              <span className="ml-2 sm:ml-3 text-base sm:text-xl font-black text-card-foreground">
                 4.9/5.0
               </span>
             </div>
