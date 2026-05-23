@@ -41,8 +41,8 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-card/95 backdrop-blur-md shadow-lg border-b border-border"
-          : "bg-card/80 backdrop-blur-sm border-b border-border shadow-sm"
+          ? "bg-card/80 backdrop-blur-md shadow-lg border-b border-border"
+          : "bg-card/40 backdrop-blur-sm border-b border-border shadow-sm"
       }`}
     >
       {/* Top Bar - Urgency/Contact (mobile-first) */}
@@ -85,7 +85,7 @@ export default function Header() {
             <a
               key={item.label}
               href={item.href}
-              className="text-sm font-semibold text-foreground hover:text-primary transition-colors uppercase tracking-tight relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full"
+              className="text-sm font-semibold text-card-foreground hover:text-primary transition-colors uppercase tracking-tight relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full"
               onClick={(e) => {
                 e.preventDefault();
                 document.querySelector(item.href)?.scrollIntoView({
@@ -119,8 +119,7 @@ export default function Header() {
             >
               <WhatsAppIcon
                 size={18}
-                color="#004080"
-                className="group-hover:!text-white transition-colors"
+                className="group-hover:!text-white transition-colors text-primary"
               />
               <span className="ml-2 hidden sm:inline">WhatsApp</span>
             </Button>
@@ -150,12 +149,12 @@ export default function Header() {
       {/* Mobile Navigation Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+            <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="md:hidden bg-card border-t border-border shadow-lg overflow-hidden"
+            className="md:hidden bg-card/95 backdrop-blur-xl border-t border-border shadow-lg overflow-hidden"
           >
             <nav className="px-4 py-4 flex flex-col gap-0 max-h-[calc(100vh-120px)] overflow-y-auto">
               {navItems.map((item, index) => (
@@ -165,7 +164,7 @@ export default function Header() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className="text-base font-semibold text-foreground hover:text-primary py-3 border-b border-muted last:border-0 active:bg-primary/5 px-2 rounded-lg transition-colors"
+                  className="text-base font-semibold text-card-foreground hover:text-primary py-3 border-b border-border last:border-0 active:bg-primary/5 px-2 rounded-lg transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
