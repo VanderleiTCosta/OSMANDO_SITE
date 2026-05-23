@@ -501,16 +501,16 @@ export default function Home() {
               <div className="absolute -bottom-6 -right-6 w-32 h-32 border-2 border-primary/20 rounded-2xl -z-10" />
 
               {/* Badge flutuante */}
-              <div className="absolute -top-4 -right-4 z-10 bg-white rounded-xl shadow-xl p-3 hidden sm:block">
+              <div className="absolute -top-4 -right-4 z-10 bg-card border border-border rounded-xl shadow-xl p-3 hidden sm:block">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-success/10 rounded-full flex items-center justify-center">
                     <span className="text-success text-sm">✓</span>
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-gray-800">
+                    <p className="text-xs font-bold text-card-foreground">
                       Certificada
                     </p>
-                    <p className="text-[10px] text-gray-500">ISO 9001</p>
+                    <p className="text-[10px] text-muted-foreground">ISO 9001</p>
                   </div>
                 </div>
               </div>
@@ -528,22 +528,22 @@ export default function Home() {
                 />
 
                 {/* Card de experiência sobreposto */}
-                <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-xl z-20">
+                <div className="absolute bottom-6 left-6 right-6 bg-card/95 backdrop-blur-sm border border-border rounded-xl p-4 shadow-xl z-20">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-3xl sm:text-4xl font-black text-primary">
                         +10
                       </p>
-                      <p className="text-xs font-bold text-gray-600 uppercase tracking-wider">
+                      <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
                         Anos de mercado
                       </p>
                     </div>
-                    <div className="w-px h-10 bg-gray-200" />
+                    <div className="w-px h-10 bg-border" />
                     <div>
                       <p className="text-3xl sm:text-4xl font-black text-secondary">
                         +5k
                       </p>
-                      <p className="text-xs font-bold text-gray-600 uppercase tracking-wider">
+                      <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
                         Clientes atendidos
                       </p>
                     </div>
@@ -571,7 +571,7 @@ export default function Home() {
                 </span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-card-foreground leading-tight">
                 Excelência em{" "}
                 <span className="relative inline-block">
                   <span className="text-primary relative z-10">
@@ -610,13 +610,13 @@ export default function Home() {
                     <div className="w-6 h-6 rounded-full bg-success/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <CheckCircle className="w-4 h-4 text-success" />
                     </div>
-                    <p className="text-sm sm:text-base text-gray-700">{item}</p>
+                    <p className="text-sm sm:text-base text-muted-foreground">{item}</p>
                   </motion.div>
                 ))}
               </div>
 
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                A <span className="font-bold text-gray-900">PROTEC</span> se
+              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                A <span className="font-bold text-card-foreground">PROTEC</span> se
                 consolidou como referência no setor de desentupimento em São
                 Paulo, atendendo com excelência residências, comércios,
                 condomínios e indústrias. Nossa missão é oferecer soluções
@@ -624,8 +624,8 @@ export default function Home() {
               </p>
 
               {/* Bloco de citação */}
-              <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-5 sm:p-6 border-l-4 border-primary">
-                <p className="text-gray-700 italic text-sm sm:text-base">
+              <div className="bg-card rounded-2xl p-5 sm:p-6 border-l-4 border-primary border-t border-r border-b border-border">
+                <p className="text-muted-foreground italic text-sm sm:text-base">
                   "Compromisso com a qualidade e satisfação total do cliente.
                   Trabalhamos com garantia por escrito em todos os serviços."
                 </p>
@@ -666,7 +666,7 @@ export default function Home() {
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-center gap-1.5">
                     <span className="text-sm">{item.icon}</span>
-                    <span className="text-[10px] sm:text-xs text-gray-500 font-medium">
+                    <span className="text-[10px] sm:text-xs text-muted-foreground font-medium">
                       {item.text}
                     </span>
                   </div>
@@ -719,7 +719,7 @@ export default function Home() {
       {/* FAQ Section - Versão Melhorada */}
       <section
         id="faq"
-        className="relative py-16 sm:py-20 md:py-28 lg:py-36 bg-gradient-to-b from-white to-gray-50/50 overflow-hidden"
+        className="relative py-16 sm:py-20 md:py-28 lg:py-36 bg-muted/5 overflow-hidden"
       >
         {/* Elementos decorativos */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -747,7 +747,7 @@ export default function Home() {
               </svg>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-card-foreground mb-4">
               Dúvidas{" "}
               <span className="text-primary relative inline-block">
                 Frequentes
@@ -766,7 +766,7 @@ export default function Home() {
                 </svg>
               </span>
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
               Tire suas dúvidas sobre nossos serviços e atendimento
             </p>
           </motion.div>
@@ -790,11 +790,11 @@ export default function Home() {
             ].map((stat, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-xl p-4 text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-card rounded-xl p-4 text-center border border-border shadow-sm hover:shadow-md transition-shadow"
               >
                 <span className="text-3xl mb-2 block">{stat.icon}</span>
                 <p className="text-2xl font-bold text-primary">{stat.value}</p>
-                <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">
+                <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
                   {stat.label}
                 </p>
               </div>
@@ -813,9 +813,9 @@ export default function Home() {
                 <AccordionItem
                   key={idx}
                   value={`item-${idx}`}
-                  className="group border border-gray-200 rounded-xl bg-white overflow-hidden hover:border-primary/30 transition-all duration-300 shadow-sm hover:shadow-md"
+                  className="group border border-border rounded-xl bg-card overflow-hidden hover:border-primary/30 transition-all duration-300 shadow-sm hover:shadow-md"
                 >
-                  <AccordionTrigger className="text-left text-base sm:text-lg md:text-lg font-semibold text-gray-900 hover:text-primary py-5 sm:py-6 px-5 sm:px-6 transition-all hover:no-underline [&[data-state=open]]:text-primary">
+                  <AccordionTrigger className="text-left text-base sm:text-lg md:text-lg font-semibold text-card-foreground hover:text-primary py-5 sm:py-6 px-5 sm:px-6 transition-all hover:no-underline [&[data-state=open]]:text-primary">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                         <span className="text-primary font-bold text-sm">
@@ -825,7 +825,7 @@ export default function Home() {
                       <span>{faq.question}</span>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm sm:text-base text-gray-600 pb-5 sm:pb-6 px-5 sm:px-6 leading-relaxed border-t border-gray-100 pt-4">
+                  <AccordionContent className="text-sm sm:text-base text-muted-foreground pb-5 sm:pb-6 px-5 sm:px-6 leading-relaxed border-t border-border pt-4">
                     <div className="flex gap-3">
                       <div className="w-1 h-auto bg-gradient-to-b from-primary to-secondary rounded-full" />
                       <p>{faq.answer}</p>
@@ -916,12 +916,12 @@ export default function Home() {
               <span className="text-success">✓</span>
               <span>Resposta Rápida</span>
             </div>
-            <div className="w-px h-3 bg-gray-200" />
+            <div className="w-px h-3 bg-border" />
             <div className="flex items-center gap-2">
               <span className="text-success">✓</span>
               <span>Suporte Técnico</span>
             </div>
-            <div className="w-px h-3 bg-gray-200" />
+            <div className="w-px h-3 bg-border" />
             <div className="flex items-center gap-2">
               <span className="text-success">✓</span>
               <span>Orçamento Grátis</span>
