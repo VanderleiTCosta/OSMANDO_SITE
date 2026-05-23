@@ -60,14 +60,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         className="block h-full focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-xl focus-visible:ring-offset-2"
         aria-label={`Ver detalhes sobre a solução de ${title}`}
       >
-        <article className="group overflow-hidden rounded-xl bg-white border border-gray-100 hover:border-primary/20 transition-all duration-300 ease-out flex flex-col h-full shadow-sm hover:shadow-xl">
+        <article className="group overflow-hidden rounded-xl bg-card border border-border hover:border-primary/20 transition-all duration-300 ease-out flex flex-col h-full shadow-sm hover:shadow-xl">
           {/* Container da imagem com aspect ratio responsivo */}
-          <figure className="relative bg-gray-100 m-0 overflow-hidden">
+          <figure className="relative bg-muted/20 m-0 overflow-hidden">
             {/* Aspect ratio container (mobile-first) */}
             <div className="relative pt-[56.25%] sm:pt-[60%] md:pt-[56.25%]">
               {/* Skeleton loader */}
               {!imageLoaded && (
-                <div className="absolute inset-0 bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 animate-pulse" />
+                <div className="absolute inset-0 bg-gradient-to-r from-muted/10 via-muted/20 to-muted/10 animate-pulse" />
               )}
               
               <img
@@ -100,17 +100,17 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
           <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-grow">
             <header>
-              <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-2 sm:mb-3 group-hover:text-primary transition-colors line-clamp-2">
+              <h3 className="text-base sm:text-lg md:text-xl font-bold text-card-foreground mb-2 sm:mb-3 group-hover:text-primary transition-colors line-clamp-2">
                 {title}
               </h3>
             </header>
 
-            <p className="text-gray-600 text-xs sm:text-sm leading-relaxed flex-grow line-clamp-3 sm:line-clamp-4 md:line-clamp-none">
+            <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed flex-grow line-clamp-3 sm:line-clamp-4 md:line-clamp-none">
               {description}
             </p>
 
             {/* CTA "Saiba Mais" - Mobile First */}
-            <div className="mt-4 sm:mt-5 md:mt-6 pt-3 sm:pt-4 border-t border-gray-100 flex items-center justify-between text-primary font-bold group-hover:text-primary/80 transition-colors">
+            <div className="mt-4 sm:mt-5 md:mt-6 pt-3 sm:pt-4 border-t border-border flex items-center justify-between text-primary font-bold group-hover:text-primary/80 transition-colors">
               <span className="text-[11px] sm:text-xs md:text-sm tracking-wide uppercase font-extrabold">
                 Saiba mais
               </span>

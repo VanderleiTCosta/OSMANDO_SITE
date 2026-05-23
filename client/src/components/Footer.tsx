@@ -44,9 +44,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-slate-950 text-white">
+    <footer className="bg-transparent text-white border-t border-border">
       {/* CTA Section - Mobile First */}
-      <div className="bg-primary relative overflow-hidden">
+      <div className="bg-card/40 backdrop-blur-md relative overflow-hidden border-b border-border">
         <div className="absolute top-0 right-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-secondary/10 rounded-full blur-2xl sm:blur-3xl -mr-16 sm:-mr-32 -mt-16 sm:-mt-32" />
         <div className="absolute bottom-0 left-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-white/5 rounded-full blur-2xl sm:blur-3xl -ml-16 sm:-ml-32 -mb-16 sm:-mb-32" />
 
@@ -56,7 +56,7 @@ export default function Footer() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 sm:mb-8"
+            className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm border border-primary/30 px-4 py-2 rounded-full mb-6 sm:mb-8"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75" />
@@ -122,7 +122,7 @@ export default function Footer() {
             ].map((benefit, idx) => (
               <div
                 key={idx}
-                className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/20"
+                className="flex items-center gap-1.5 bg-card/60 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-border"
               >
                 <span className="text-sm sm:text-base">{benefit.icon}</span>
                 <span className="text-[10px] sm:text-xs font-medium text-white/80 uppercase tracking-wider">
@@ -163,7 +163,7 @@ export default function Footer() {
               href="tel:+5511948202927"
               className="group w-full sm:w-auto transform transition-all duration-300 hover:scale-105"
             >
-              <button className="w-full px-6 sm:px-8 md:px-10 py-3.5 sm:py-4 md:py-5 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-bold rounded-xl transition-all border-2 border-white/30 hover:border-white/50 flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base md:text-lg group-hover:shadow-xl">
+              <button className="w-full px-6 sm:px-8 md:px-10 py-3.5 sm:py-4 md:py-5 bg-card/40 hover:bg-card/60 backdrop-blur-sm text-white font-bold rounded-xl transition-all border-2 border-border hover:border-primary/50 flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base md:text-lg group-hover:shadow-xl">
                 <Phone
                   size={isMobile ? 18 : 20}
                   className="transition-transform group-hover:scale-110"

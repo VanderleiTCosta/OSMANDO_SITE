@@ -66,9 +66,9 @@ export default function HeroSection() {
               {/* Título responsivo */}
               <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
                 Desentupidora 24h com{" "}
-                <span className="text-secondary inline-block relative">
+                <span className="text-primary inline-block relative">
                   Orçamento Grátis
-                  <span className="absolute -bottom-1 left-0 w-full h-1 bg-secondary/50 rounded-full hidden sm:block" />
+                  <span className="absolute -bottom-1 left-0 w-full h-1 bg-primary/50 rounded-full hidden sm:block" />
                 </span>{" "}
                 no Local
               </h1>
@@ -153,7 +153,7 @@ export default function HeroSection() {
                     (500+ avaliações)
                   </span>
                 </div>
-                <div className="w-px h-4 bg-white/30" />
+                <div className="w-px h-4 bg-border" />
                 <div className="text-white/80 text-[10px] sm:text-xs flex items-center gap-1">
                   <span className="text-sm">🏆</span>
                   <span>Garantia por escrito</span>
@@ -195,15 +195,15 @@ export default function HeroSection() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5 }}
-                className="absolute -bottom-6 -left-6 bg-white rounded-lg shadow-xl p-3 hidden lg:block"
+                className="absolute -bottom-6 -left-6 bg-card border border-border rounded-lg shadow-xl p-3 hidden lg:block"
               >
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-success/10 rounded-full flex items-center justify-center">
                     <span className="text-success text-lg">✓</span>
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-gray-800">Sem taxa extra</p>
-                    <p className="text-[10px] text-gray-500">Orçamento gratuito</p>
+                    <p className="text-xs font-bold text-card-foreground">Sem taxa extra</p>
+                    <p className="text-[10px] text-muted-foreground">Orçamento gratuito</p>
                   </div>
                 </div>
               </motion.div>
@@ -219,7 +219,7 @@ export default function HeroSection() {
         transition={{ delay: 0.8 }}
         className="absolute bottom-4 left-1/2 transform -translate-x-1/2 md:hidden"
       >
-        <div className="animate-bounce bg-white/20 backdrop-blur-sm rounded-full p-2">
+        <div className="animate-bounce bg-card/20 backdrop-blur-sm rounded-full p-2 border border-border">
           <svg
             className="w-4 h-4 text-white"
             fill="none"
