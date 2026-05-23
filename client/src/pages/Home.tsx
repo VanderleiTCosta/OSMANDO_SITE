@@ -470,7 +470,7 @@ export default function Home() {
       {/* Quem Somos Section - Versão Final Corrigida */}
       <section
         id="quem-somos"
-        className="relative py-16 sm:py-20 md:py-28 lg:py-36 bg-gradient-to-br from-slate-50 to-white overflow-hidden"
+        className="relative py-16 sm:py-20 md:py-28 lg:py-36 bg-card/20 backdrop-blur-sm border-y border-border overflow-hidden"
       >
         {/* Elementos decorativos */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -478,10 +478,10 @@ export default function Home() {
 
         {/* Padrão decorativo simples - sem erros de sintaxe */}
         <div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 opacity-10"
           style={{
             backgroundImage:
-              "radial-gradient(circle, #cbd5e1 1px, transparent 1px)",
+              "radial-gradient(circle, #1e293b 1px, transparent 1px)",
             backgroundSize: "24px 24px",
           }}
         />
