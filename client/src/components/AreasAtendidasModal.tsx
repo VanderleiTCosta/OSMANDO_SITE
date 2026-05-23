@@ -93,25 +93,25 @@ const AreasAtendidasModal: React.FC<AreasAtendidasModalProps> = ({
               stiffness: 300,
               duration: 0.3
             }}
-            className="relative w-full sm:max-w-lg bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] sm:max-h-[85vh]"
+            className="relative w-full sm:max-w-lg bg-card rounded-t-2xl sm:rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] sm:max-h-[85vh] border border-border"
           >
             {/* Header do Modal - Mobile First */}
-            <header className="sticky top-0 z-10 flex items-center justify-between p-4 sm:p-5 border-b border-gray-100 bg-white sm:bg-gray-50">
+            <header className="sticky top-0 z-10 flex items-center justify-between p-4 sm:p-5 border-b border-border bg-card">
               <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
                 {regiaoSelecionada ? (
                   <button
                     onClick={handleBackToRegioes}
-                    className="p-2 -ml-2 hover:bg-gray-100 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary active:bg-gray-200"
+                    className="p-2 -ml-2 hover:bg-muted rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary active:bg-muted/80"
                     aria-label="Voltar para regiões"
                   >
-                    <ArrowLeft className="w-5 h-5 text-gray-700" />
+                    <ArrowLeft className="w-5 h-5 text-card-foreground" />
                   </button>
                 ) : (
                   <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/10 flex items-center justify-center">
                     <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary" aria-hidden="true" />
                   </div>
                 )}
-                <h2 id="modal-title" className="text-lg sm:text-xl font-bold text-gray-900 truncate">
+                <h2 id="modal-title" className="text-lg sm:text-xl font-bold text-card-foreground truncate">
                   {regiaoSelecionada 
                     ? isMobile 
                       ? regiaoSelecionada.nome.split(' ')[0]
@@ -139,11 +139,11 @@ const AreasAtendidasModal: React.FC<AreasAtendidasModalProps> = ({
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.05 }}
                       onClick={() => handleSelectRegiao(regiao)}
-                      className="w-full flex items-center justify-between p-3 sm:p-4 rounded-xl border border-gray-200 hover:border-primary hover:bg-primary/5 transition-all group focus:outline-none focus:ring-2 focus:ring-primary active:bg-primary/10"
+                      className="w-full flex items-center justify-between p-3 sm:p-4 rounded-xl border border-border hover:border-primary hover:bg-primary/5 transition-all group focus:outline-none focus:ring-2 focus:ring-primary active:bg-primary/10"
                     >
                       <div className="flex items-center gap-3">
                         <MapPin className="w-4 h-4 text-gray-400 group-hover:text-primary transition-colors" />
-                        <span className="font-semibold text-gray-800 group-hover:text-primary text-sm sm:text-base">
+                        <span className="font-semibold text-card-foreground group-hover:text-primary text-sm sm:text-base">
                           {regiao.nome}
                         </span>
                       </div>
@@ -159,8 +159,8 @@ const AreasAtendidasModal: React.FC<AreasAtendidasModalProps> = ({
               ) : (
                 <div className="grid grid-cols-1 gap-2 sm:gap-3">
                   {/* Indicador de quantidade */}
-                  <div className="mb-3 pb-2 border-b border-gray-100">
-                    <p className="text-xs text-gray-500">
+                  <div className="mb-3 pb-2 border-b border-border">
+                    <p className="text-xs text-muted-foreground">
                       {regiaoSelecionada.bairros.length} bairros atendidos
                     </p>
                   </div>
@@ -172,7 +172,7 @@ const AreasAtendidasModal: React.FC<AreasAtendidasModalProps> = ({
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.02 }}
                       onClick={() => handleNavigateToBairro(bairro.slug)}
-                      className="w-full text-left p-3 sm:p-3.5 rounded-lg border border-gray-100 hover:border-primary hover:bg-primary/5 hover:text-primary font-medium text-gray-700 transition-all focus:outline-none focus:ring-2 focus:ring-primary active:bg-primary/10"
+                      className="w-full text-left p-3 sm:p-3.5 rounded-lg border border-border hover:border-primary hover:bg-primary/5 hover:text-primary font-medium text-card-foreground transition-all focus:outline-none focus:ring-2 focus:ring-primary active:bg-primary/10"
                     >
                       <div className="flex items-center justify-between">
                         <span className="text-sm sm:text-base">{bairro.nome}</span>
@@ -185,7 +185,7 @@ const AreasAtendidasModal: React.FC<AreasAtendidasModalProps> = ({
             </div>
 
             {/* Footer com CTA rápido (mobile) */}
-            <div className="sticky bottom-0 p-4 border-t border-gray-100 bg-white sm:hidden">
+            <div className="sticky bottom-0 p-4 border-t border-border bg-card sm:hidden">
               <a href="https://wa.me/5511948202927" className="block">
                 <button className="w-full py-3 bg-success text-white font-bold rounded-lg flex items-center justify-center gap-2 text-sm active:scale-98 transition-transform">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

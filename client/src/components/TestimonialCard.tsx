@@ -42,7 +42,7 @@ export default function TestimonialCard({
       transition={{ duration: 0.4, delay }}
       whileHover={{ y: -4 }}
       whileTap={{ scale: 0.98 }}
-      className="group p-5 sm:p-6 md:p-8 rounded-xl bg-white border border-gray-100 hover:border-primary/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+      className="group p-5 sm:p-6 md:p-8 rounded-xl bg-card border border-border hover:border-primary/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full"
     >
       {/* Stars - Responsivo */}
       <div className="flex gap-0.5 sm:gap-1 mb-3 sm:mb-4 md:mb-5">
@@ -56,7 +56,7 @@ export default function TestimonialCard({
       </div>
 
       {/* Quote com botão "Ler mais" em mobile */}
-      <blockquote className="text-gray-700 mb-6 sm:mb-7 md:mb-8 leading-relaxed text-xs sm:text-sm md:text-base italic flex-grow">
+      <blockquote className="text-muted-foreground mb-6 sm:mb-7 md:mb-8 leading-relaxed text-xs sm:text-sm md:text-base italic flex-grow">
         "{displayText}"
       </blockquote>
 
@@ -70,15 +70,15 @@ export default function TestimonialCard({
       )}
 
       {/* Author - Mobile First */}
-      <div className="flex items-center gap-3 sm:gap-4 border-t border-gray-100 pt-4 sm:pt-5 md:pt-6">
+      <div className="flex items-center gap-3 sm:gap-4 border-t border-border pt-4 sm:pt-5 md:pt-6">
         <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center font-bold text-base sm:text-lg shadow-md">
           {initial}
         </div>
         <div className="min-w-0 flex-1">
-          <p className="font-bold text-gray-900 leading-none mb-1 text-sm sm:text-base truncate">
+          <p className="font-bold text-card-foreground leading-none mb-1 text-sm sm:text-base truncate">
             {name}
           </p>
-          <p className="text-[10px] sm:text-xs text-gray-500 font-medium uppercase tracking-wider truncate">
+          <p className="text-[10px] sm:text-xs text-muted-foreground/70 font-medium uppercase tracking-wider truncate">
             {location}
           </p>
         </div>
