@@ -310,7 +310,7 @@ export default function Home() {
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
               Atendimento em{" "}
-              <span className="text-secondary relative inline-block">
+              <span className="text-primary relative inline-block">
                 4 Passos
                 <svg
                   className="absolute -bottom-2 left-0 w-full h-2"
@@ -322,7 +322,7 @@ export default function Home() {
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeDasharray="5 5"
-                    className="text-secondary/50"
+                    className="text-primary/50"
                   />
                 </svg>
               </span>
@@ -434,7 +434,7 @@ export default function Home() {
                   transition={{ delay: idx * 0.1 }}
                   className="space-y-2"
                 >
-                  <p className="text-2xl sm:text-3xl md:text-4xl font-black text-secondary">
+                  <p className="text-2xl sm:text-3xl md:text-4xl font-black text-primary">
                     {stat.value}
                   </p>
                   <p className="text-xs sm:text-sm text-white/60 font-medium uppercase tracking-wider">
@@ -510,7 +510,9 @@ export default function Home() {
                     <p className="text-xs font-bold text-card-foreground">
                       Certificada
                     </p>
-                    <p className="text-[10px] text-muted-foreground">ISO 9001</p>
+                    <p className="text-[10px] text-muted-foreground">
+                      ISO 9001
+                    </p>
                   </div>
                 </div>
               </div>
@@ -540,7 +542,7 @@ export default function Home() {
                     </div>
                     <div className="w-px h-10 bg-border" />
                     <div>
-                      <p className="text-3xl sm:text-4xl font-black text-secondary">
+                      <p className="text-3xl sm:text-4xl font-black text-primary">
                         +5k
                       </p>
                       <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
@@ -610,14 +612,16 @@ export default function Home() {
                     <div className="w-6 h-6 rounded-full bg-success/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <CheckCircle className="w-4 h-4 text-success" />
                     </div>
-                    <p className="text-sm sm:text-base text-muted-foreground">{item}</p>
+                    <p className="text-sm sm:text-base text-muted-foreground">
+                      {item}
+                    </p>
                   </motion.div>
                 ))}
               </div>
 
               <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                A <span className="font-bold text-card-foreground">PROTEC</span> se
-                consolidou como referência no setor de desentupimento em São
+                A <span className="font-bold text-card-foreground">PROTEC</span>{" "}
+                se consolidou como referência no setor de desentupimento em São
                 Paulo, atendendo com excelência residências, comércios,
                 condomínios e indústrias. Nossa missão é oferecer soluções
                 rápidas, eficientes e com total transparência.
@@ -697,7 +701,7 @@ export default function Home() {
             <div className="flex justify-center items-center gap-1 sm:gap-2 mt-4 sm:mt-6">
               <div className="flex gap-0.5 sm:gap-1">
                 {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-lg sm:text-2xl text-secondary">
+                  <span key={i} className="text-lg sm:text-2xl text-primary">
                     ★
                   </span>
                 ))}

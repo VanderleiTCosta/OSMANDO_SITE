@@ -209,7 +209,7 @@ export default function Footer() {
             <h3 className="text-xl sm:text-2xl font-bold leading-tight uppercase tracking-tighter">
               DESENTUPIDORA
               <br />
-              <span className="text-secondary">PROTEC</span>
+              <span className="text-primary">PROTEC</span>
             </h3>
             <p className="text-white/60 text-xs sm:text-sm leading-relaxed max-w-md mx-auto md:mx-0">
               Referência em desentupimento em São Paulo. Atendimento emergencial
@@ -268,7 +268,7 @@ export default function Footer() {
                     <li key={item.label}>
                       <a
                         href={item.href}
-                        className="hover:text-secondary transition-colors inline-flex items-center gap-2 py-1 active:text-secondary"
+                        className="hover:text-primary transition-colors inline-flex items-center gap-2 py-1 active:text-primary"
                       >
                         {item.label}
                       </a>
@@ -306,11 +306,11 @@ export default function Footer() {
                   <li>
                     <a
                       href="tel:+5511948202927"
-                      className="hover:text-secondary transition-colors flex items-start gap-3 active:text-secondary"
+                      className="hover:text-primary transition-colors flex items-start gap-3 active:text-primary"
                     >
                       <Phone
                         size={16}
-                        className="text-secondary shrink-0 mt-0.5"
+                        className="text-primary shrink-0 mt-0.5"
                       />
                       <div>
                         <span>(11) 94820-2927</span>
@@ -324,16 +324,16 @@ export default function Footer() {
                   <li>
                     <a
                       href="mailto:contato@PROTEC.com.br"
-                      className="hover:text-secondary transition-colors flex items-center gap-3 active:text-secondary"
+                      className="hover:text-primary transition-colors flex items-center gap-3 active:text-primary"
                     >
-                      <Mail size={16} className="text-secondary shrink-0" />
+                      <Mail size={16} className="text-primary shrink-0" />
                       <span className="break-all">contato@PROTEC.com.br</span>
                     </a>
                   </li>
                   <li className="flex items-start gap-3">
                     <MapPin
                       size={16}
-                      className="text-secondary shrink-0 mt-0.5"
+                      className="text-primary shrink-0 mt-0.5"
                     />
                     <span>Atendimento em toda a Grande São Paulo e ABC</span>
                   </li>
@@ -367,7 +367,7 @@ export default function Footer() {
                   className="space-y-3 sm:space-y-4 overflow-hidden mt-3 md:mt-0"
                 >
                   <div className="bg-white/5 p-3 sm:p-4 rounded-lg border border-white/10">
-                    <p className="text-secondary font-bold text-xs sm:text-sm mb-1">
+                    <p className="text-primary font-bold text-xs sm:text-sm mb-1">
                       Aberto 24 Horas
                     </p>
                     <p className="text-white/40 text-[10px] sm:text-xs">

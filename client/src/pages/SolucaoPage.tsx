@@ -79,12 +79,14 @@ const SolucaoPage: React.FC = () => {
     {
       icon: <ShieldCheck size={isMobile ? 22 : 28} />,
       title: "Garantia por Escrito",
-      description: "Todos os serviços contam com garantia formalizada em contrato.",
+      description:
+        "Todos os serviços contam com garantia formalizada em contrato.",
     },
     {
       icon: <Clock size={isMobile ? 22 : 28} />,
       title: "Chegada em 40 Minutos",
-      description: "Bases móveis estrategicamente posicionadas para rapidez imediata.",
+      description:
+        "Bases móveis estrategicamente posicionadas para rapidez imediata.",
     },
     {
       icon: <BadgeCheck size={isMobile ? 22 : 28} />,
@@ -144,7 +146,8 @@ const SolucaoPage: React.FC = () => {
           <section
             className="relative min-h-[80vh] sm:min-h-[70vh] flex items-center justify-center overflow-hidden"
             style={{
-              backgroundImage: "url('https://d2xsxph8kpxj0f.cloudfront.net/310519663060650935/K9o8LWiVmPpHSveFtHmbjC/hero-background-55Cmg5Y6Z87dK4wgmnzMev.webp')",
+              backgroundImage:
+                "url('https://d2xsxph8kpxj0f.cloudfront.net/310519663060650935/K9o8LWiVmPpHSveFtHmbjC/hero-background-55Cmg5Y6Z87dK4wgmnzMev.webp')",
               backgroundSize: "cover",
               backgroundPosition: isMobile ? "65% center" : "center",
             }}
@@ -194,17 +197,29 @@ const SolucaoPage: React.FC = () => {
                     className="inline-block bg-primary/30 backdrop-blur-sm border border-white/20 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-bold tracking-wide uppercase"
                   >
                     <span className="animate-pulse inline-block mr-1">⚡</span>
-                    <span className="hidden xs:inline">Atendimento Emergencial</span>
+                    <span className="hidden xs:inline">
+                      Atendimento Emergencial
+                    </span>
                     <span className="xs:hidden">Emergência 24h</span>
                   </motion.div>
 
                   {/* Título */}
                   <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold leading-tight">
                     Serviço Especializado de{" "}
-                    <span className="text-secondary relative inline-block">
+                    <span className="text-primary relative inline-block">
                       {solucaoData.titulo}
-                      <svg className="absolute -bottom-2 left-0 w-full h-1 sm:h-2" viewBox="0 0 100 10" preserveAspectRatio="none">
-                        <path d="M0 5 L100 5" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" className="text-secondary/50" />
+                      <svg
+                        className="absolute -bottom-2 left-0 w-full h-1 sm:h-2"
+                        viewBox="0 0 100 10"
+                        preserveAspectRatio="none"
+                      >
+                        <path
+                          d="M0 5 L100 5"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeDasharray="4 4"
+                          className="text-primary/50"
+                        />
                       </svg>
                     </span>
                   </h1>
@@ -264,7 +279,9 @@ const SolucaoPage: React.FC = () => {
                         <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-secondary flex items-center justify-center text-[8px] sm:text-[10px] font-bold text-white">
                           ✓
                         </div>
-                        <span className="text-[10px] sm:text-xs md:text-sm font-medium">{feature}</span>
+                        <span className="text-[10px] sm:text-xs md:text-sm font-medium">
+                          {feature}
+                        </span>
                       </motion.div>
                     ))}
                   </div>
@@ -276,7 +293,10 @@ const SolucaoPage: React.FC = () => {
           {/* Benefícios Grid - Mobile First */}
           <section className="py-12 sm:py-16 md:py-20 lg:py-32 bg-muted/5">
             <div className="container px-4 sm:px-6">
-              <motion.div {...fadeIn} className="text-center mb-8 sm:mb-12 md:mb-16">
+              <motion.div
+                {...fadeIn}
+                className="text-center mb-8 sm:mb-12 md:mb-16"
+              >
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
                   Por que escolher a{" "}
                   <span className="text-primary underline decoration-secondary decoration-4 underline-offset-4 sm:underline-offset-8">
@@ -320,7 +340,10 @@ const SolucaoPage: React.FC = () => {
           {/* Como Funciona Section - Mobile First */}
           <section className="py-12 sm:py-16 md:py-20 lg:py-32 bg-primary text-white">
             <div className="container px-4 sm:px-6">
-              <motion.div {...fadeIn} className="text-center mb-8 sm:mb-12 md:mb-16">
+              <motion.div
+                {...fadeIn}
+                className="text-center mb-8 sm:mb-12 md:mb-16"
+              >
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
                   Atendimento em 4 Passos
                 </h2>
@@ -372,7 +395,10 @@ const SolucaoPage: React.FC = () => {
           {/* Seção de Diferenciais Adicionais */}
           <section className="py-12 sm:py-16 md:py-20 lg:py-32 bg-white">
             <div className="container px-4 sm:px-6 max-w-5xl">
-              <motion.div {...fadeIn} className="text-center mb-8 sm:mb-12 md:mb-16">
+              <motion.div
+                {...fadeIn}
+                className="text-center mb-8 sm:mb-12 md:mb-16"
+              >
                 <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-bold mb-4 sm:mb-6">
                   <Star className="w-3 h-3 sm:w-4 sm:h-4" />
                   <span>Referência em São Paulo</span>
@@ -401,7 +427,9 @@ const SolucaoPage: React.FC = () => {
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-2 sm:gap-3">
                         <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-success mt-0.5 flex-shrink-0" />
-                        <span className="text-xs sm:text-sm text-muted-foreground">{item}</span>
+                        <span className="text-xs sm:text-sm text-muted-foreground">
+                          {item}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -421,7 +449,9 @@ const SolucaoPage: React.FC = () => {
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-2 sm:gap-3">
                         <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-success mt-0.5 flex-shrink-0" />
-                        <span className="text-xs sm:text-sm text-muted-foreground">{item}</span>
+                        <span className="text-xs sm:text-sm text-muted-foreground">
+                          {item}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -433,7 +463,10 @@ const SolucaoPage: React.FC = () => {
                 className="text-center mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-100"
               >
                 <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-                  <a href="https://wa.me/5511948202927" className="w-full sm:w-auto">
+                  <a
+                    href="https://wa.me/5511948202927"
+                    className="w-full sm:w-auto"
+                  >
                     <Button className="w-full bg-success hover:bg-success/90 text-white font-bold h-11 sm:h-12 px-6">
                       <WhatsAppIcon size={isMobile ? 16 : 18} />
                       Solicitar Orçamento Grátis

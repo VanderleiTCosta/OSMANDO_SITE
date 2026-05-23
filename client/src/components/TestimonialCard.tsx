@@ -30,9 +30,8 @@ export default function TestimonialCard({
   }, []);
 
   const shouldTruncate = isMobile && text.length > 120;
-  const displayText = shouldTruncate && !isExpanded 
-    ? text.slice(0, 120) + "..."
-    : text;
+  const displayText =
+    shouldTruncate && !isExpanded ? text.slice(0, 120) + "..." : text;
 
   return (
     <motion.div
@@ -50,7 +49,7 @@ export default function TestimonialCard({
           <Star
             key={i}
             size={isMobile ? 14 : 18}
-            className="fill-secondary text-secondary"
+            className="fill-secondary text-primary"
           />
         ))}
       </div>
