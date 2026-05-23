@@ -153,7 +153,7 @@ export default function HeroSection() {
                     (500+ avaliações)
                   </span>
                 </div>
-                <div className="w-px h-4 bg-white/30" />
+                <div className="w-px h-4 bg-border" />
                 <div className="text-white/80 text-[10px] sm:text-xs flex items-center gap-1">
                   <span className="text-sm">🏆</span>
                   <span>Garantia por escrito</span>
@@ -219,7 +219,7 @@ export default function HeroSection() {
         transition={{ delay: 0.8 }}
         className="absolute bottom-4 left-1/2 transform -translate-x-1/2 md:hidden"
       >
-        <div className="animate-bounce bg-white/20 backdrop-blur-sm rounded-full p-2">
+        <div className="animate-bounce bg-card/20 backdrop-blur-sm rounded-full p-2 border border-border">
           <svg
             className="w-4 h-4 text-white"
             fill="none"
