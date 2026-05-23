@@ -22,7 +22,7 @@ export default function DifferentialCard({
       transition={{ duration: 0.5, delay }}
       whileHover={{ y: -8 }}
       whileTap={{ scale: 0.98 }}
-      className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-border/50 hover:border-secondary/30"
+      className="group relative bg-card rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-border/50 hover:border-secondary/30"
     >
       {/* Efeito de gradiente de fundo no hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-secondary/0 to-primary/0 group-hover:from-primary/5 group-hover:via-secondary/5 group-hover:to-primary/5 transition-all duration-500" />

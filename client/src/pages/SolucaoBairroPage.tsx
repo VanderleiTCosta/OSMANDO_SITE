@@ -102,7 +102,7 @@ const SolucaoBairroPage: React.FC = () => {
         <meta name="description" content={localizedDescription} />
       </Helmet>
 
-      <div className="min-h-screen bg-white selection:bg-secondary/30 flex flex-col overflow-x-hidden">
+      <div className="min-h-screen selection:bg-secondary/30 flex flex-col overflow-x-hidden">
         <main className="flex-grow">
           {/* Hero Section - Mobile First Premium */}
           <section
@@ -204,7 +204,7 @@ const SolucaoBairroPage: React.FC = () => {
           </section>
 
           {/* Seção de Sintomas - Mobile First */}
-          <section className="py-12 sm:py-16 md:py-20 bg-white">
+          <section className="py-12 sm:py-16 md:py-20">
             <div className="container px-4 sm:px-6 max-w-5xl mx-auto">
               <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12">
                 <motion.div {...fadeIn}>
@@ -212,43 +212,43 @@ const SolucaoBairroPage: React.FC = () => {
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-secondary/10 rounded-xl flex items-center justify-center">
                       <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 text-secondary" />
                     </div>
-                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-card-foreground">
                       Sinais de Alerta
                     </h2>
                   </div>
                   <ul className="space-y-3 sm:space-y-4">
                     {solucaoContent.sintomas.slice(0, 4).map((sintoma: string, index: number) => (
-                      <li key={index} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-gray-50 rounded-lg">
+                      <li key={index} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-card rounded-lg border border-border">
                         <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-success mt-0.5 flex-shrink-0" />
-                        <span className="text-xs sm:text-sm text-gray-600">
-                          <strong className="text-gray-900">{sintoma}?</strong> Em {bairroData.nome}, resolvemos rápido.
+                        <span className="text-xs sm:text-sm text-muted-foreground">
+                          <strong className="text-card-foreground">{sintoma}?</strong> Em {bairroData.nome}, resolvemos rápido.
                         </span>
                       </li>
                     ))}
                   </ul>
                 </motion.div>
 
-                <motion.div {...fadeIn} className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-5 sm:p-6 md:p-8 border border-primary/10">
+                <motion.div {...fadeIn} className="bg-card rounded-2xl p-5 sm:p-6 md:p-8 border border-border shadow-sm">
                   <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                       {solucaoContent.iconePrincipal}
                     </div>
-                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900">
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-card-foreground">
                       Por que a PROTEC?
                     </h3>
                   </div>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-2 sm:gap-3">
                       <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5" />
-                      <span className="text-xs sm:text-sm text-gray-600">+10 anos na {bairroData.regiao}</span>
+                      <span className="text-xs sm:text-sm text-muted-foreground">+10 anos na {bairroData.regiao}</span>
                     </li>
                     <li className="flex items-start gap-2 sm:gap-3">
                       <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5" />
-                      <span className="text-xs sm:text-sm text-gray-600">Chegada em 40min em {bairroData.nome}</span>
+                      <span className="text-xs sm:text-sm text-muted-foreground">Chegada em 40min em {bairroData.nome}</span>
                     </li>
                     <li className="flex items-start gap-2 sm:gap-3">
                       <Award className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5" />
-                      <span className="text-xs sm:text-sm text-gray-600">Garantia de satisfação</span>
+                      <span className="text-xs sm:text-sm text-muted-foreground">Garantia de satisfação</span>
                     </li>
                   </ul>
                 </motion.div>
@@ -257,16 +257,16 @@ const SolucaoBairroPage: React.FC = () => {
           </section>
 
           {/* Metodologia - Cards Profissionais */}
-          <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
+          <section className="py-12 sm:py-16 md:py-20 bg-muted/5">
             <div className="container px-4 sm:px-6 max-w-6xl mx-auto">
               <motion.div {...fadeIn} className="text-center mb-8 sm:mb-12">
                 <div className="inline-flex items-center gap-2 bg-primary/10 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4">
                   <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-primary">Metodologia</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-card-foreground mb-3 sm:mb-4">
                   Nossa Metodologia em {bairroData.nome}
                 </h2>
-                <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">{solucaoContent.diferencial}</p>
+                <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">{solucaoContent.diferencial}</p>
               </motion.div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">

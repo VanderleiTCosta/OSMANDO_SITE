@@ -138,7 +138,7 @@ const SolucaoPage: React.FC = () => {
         <meta name="description" content={solucaoData.descricao} />
       </Helmet>
 
-      <div className="min-h-screen bg-white selection:bg-secondary/30 flex flex-col overflow-x-hidden">
+      <div className="min-h-screen selection:bg-secondary/30 flex flex-col overflow-x-hidden">
         <main className="flex-grow">
           {/* Hero Section - Mobile First */}
           <section
@@ -274,7 +274,7 @@ const SolucaoPage: React.FC = () => {
           </section>
 
           {/* Benefícios Grid - Mobile First */}
-          <section className="py-12 sm:py-16 md:py-20 lg:py-32 bg-muted/30">
+          <section className="py-12 sm:py-16 md:py-20 lg:py-32 bg-muted/5">
             <div className="container px-4 sm:px-6">
               <motion.div {...fadeIn} className="text-center mb-8 sm:mb-12 md:mb-16">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
@@ -300,7 +300,7 @@ const SolucaoPage: React.FC = () => {
                   <motion.div
                     key={idx}
                     variants={fadeIn}
-                    className="group bg-white p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                    className="group bg-card p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-sm border border-border hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                   >
                     <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 sm:mb-6 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                       {benefit.icon}

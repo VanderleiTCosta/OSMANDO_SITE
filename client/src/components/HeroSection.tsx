@@ -195,15 +195,15 @@ export default function HeroSection() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5 }}
-                className="absolute -bottom-6 -left-6 bg-white rounded-lg shadow-xl p-3 hidden lg:block"
+                className="absolute -bottom-6 -left-6 bg-card border border-border rounded-lg shadow-xl p-3 hidden lg:block"
               >
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-success/10 rounded-full flex items-center justify-center">
                     <span className="text-success text-lg">✓</span>
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-gray-800">Sem taxa extra</p>
-                    <p className="text-[10px] text-gray-500">Orçamento gratuito</p>
+                    <p className="text-xs font-bold text-card-foreground">Sem taxa extra</p>
+                    <p className="text-[10px] text-muted-foreground">Orçamento gratuito</p>
                   </div>
                 </div>
               </motion.div>

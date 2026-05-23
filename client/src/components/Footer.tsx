@@ -44,7 +44,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-slate-950 text-white">
+    <footer className="bg-black text-white">
       {/* CTA Section - Mobile First */}
       <div className="bg-primary relative overflow-hidden">
         <div className="absolute top-0 right-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-secondary/10 rounded-full blur-2xl sm:blur-3xl -mr-16 sm:-mr-32 -mt-16 sm:-mt-32" />

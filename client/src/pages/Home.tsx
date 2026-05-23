@@ -213,14 +213,14 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-white selection:bg-secondary/30 overflow-x-hidden">
+    <div className="min-h-screen selection:bg-secondary/30 overflow-x-hidden">
       <Header />
       <HeroSection />
 
       {/* Diferenciais Section - Mobile First */}
       <section
         id="diferenciais"
-        className="py-12 sm:py-16 md:py-20 lg:py-32 bg-muted/30"
+        className="py-12 sm:py-16 md:py-20 lg:py-32 bg-muted/5"
       >
         <div className="container px-4 sm:px-6">
           <motion.div
