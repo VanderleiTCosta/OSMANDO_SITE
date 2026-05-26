@@ -1,4 +1,4 @@
-// SolucaoBairroPage.tsx - Mobile First + Profissional
+// SolucaoBairroPage.tsx - Mobile First + Profissional (padrão consistente com SolucaoPage)
 import React, { useMemo, useState, useEffect } from "react";
 import { useParams, Link } from "wouter";
 import { Helmet } from "react-helmet";
@@ -25,6 +25,8 @@ import {
   Medal,
   Star,
   ChevronRight,
+  PhoneCall,
+  DollarSign,
 } from "lucide-react";
 import Footer from "../components/Footer";
 import { SP_REGIONS } from "../data/sp-regions";
@@ -39,9 +41,18 @@ const fadeIn = {
   transition: { duration: 0.5 },
 };
 
-// Mapeamento completo de soluções (mantenha o mesmo do seu código original)
+const staggerContainer = {
+  initial: {},
+  whileInView: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+  viewport: { once: true, margin: "-50px" },
+};
+
+// Mapeamento completo de soluções
 const solucaoContentMap: Record<string, any> = {
-  // ... (mantenha todo o mapeamento existente)
   desentupidora: {
     tituloCompleto: "Desentupidora",
     nomeVariacoes: ["desentupidora", "serviço de desentupimento"],
@@ -87,7 +98,176 @@ const solucaoContentMap: Record<string, any> = {
     ],
     iconePrincipal: <Wrench size={28} />,
   },
-  // ... adicione os outros mapeamentos (desentupidora-de-pia, etc.)
+  desentupidoraDePia: {
+    tituloCompleto: "Desentupidora de Pia",
+    nomeVariacoes: ["desentupidora de pia", "desentupir pia"],
+    descricaoCurta:
+      "Desentupimento rápido de pias com tecnologia que não danifica sua tubulação.",
+    descricaoLonga:
+      "Especialistas em desentupimento de pias com equipamentos específicos para cada tipo de obstrução.",
+    beneficios: [
+      {
+        titulo: "Resolução Rápida",
+        descricao: "Serviço em até 30 minutos",
+        icone: <Clock size={24} />,
+      },
+      {
+        titulo: "Sem Produtos Químicos",
+        descricao: "Método ecológico e seguro",
+        icone: <ShieldCheck size={24} />,
+      },
+      {
+        titulo: "Garantia de 30 dias",
+        descricao: "Por escrito",
+        icone: <Award size={24} />,
+      },
+    ],
+    sintomas: ["água parada", "mau cheiro", "escoamento lento"],
+    diferencial: "Técnica exclusiva que remove gordura e resíduos acumulados.",
+    tecnicas: [
+      "Desobstrução Mecânica",
+      "Hidrojateamento Leve",
+      "Inspeção Rápida",
+    ],
+    palavrasChave: ["desentupidora de pia", "desentupir pia"],
+    iconePrincipal: <Droplets size={28} />,
+  },
+  desentupidoraDeVaso: {
+    tituloCompleto: "Desentupidora de Vaso Sanitário",
+    nomeVariacoes: ["desentupidora de vaso", "desentupir vaso"],
+    descricaoCurta:
+      "Solução definitiva para vasos entupidos sem quebrar o piso.",
+    descricaoLonga:
+      "Utilizamos equipamentos específicos que desobstruem o vaso preservando toda a estrutura.",
+    beneficios: [
+      {
+        titulo: "Sem Quebra",
+        descricao: "Preservamos seu banheiro",
+        icone: <ShieldCheck size={24} />,
+      },
+      {
+        titulo: "Resolução Imediata",
+        descricao: "Vaso funcionando em minutos",
+        icone: <Clock size={24} />,
+      },
+      {
+        titulo: "Higienização",
+        descricao: "Limpeza após serviço",
+        icone: <Award size={24} />,
+      },
+    ],
+    sintomas: ["vaso transbordando", "água não desce", "mau cheiro forte"],
+    diferencial: "Técnica especializada que não danifica a louça.",
+    tecnicas: [
+      "Desentupimento com Mola Especial",
+      "Pistola de Pressão",
+      "Inspeção por Câmera",
+    ],
+    palavrasChave: ["desentupidora de vaso", "desentupir vaso sanitário"],
+    iconePrincipal: <Trash2 size={28} />,
+  },
+  caixaDeGordura: {
+    tituloCompleto: "Limpeza de Caixa de Gordura",
+    nomeVariacoes: ["limpeza caixa de gordura", "caixa de gordura entupida"],
+    descricaoCurta:
+      "Limpeza completa e desentupimento de caixas de gordura com equipamento de alto vácuo.",
+    descricaoLonga:
+      "Serviço especializado que resolve problemas de entupimento e mau cheiro provenientes da caixa de gordura.",
+    beneficios: [
+      {
+        titulo: "Limpeza Total",
+        descricao: "Eliminação completa da gordura",
+        icone: <Truck size={24} />,
+      },
+      {
+        titulo: "Elimina Mau Cheiro",
+        descricao: "Fim do odor desagradável",
+        icone: <ShieldCheck size={24} />,
+      },
+      {
+        titulo: "Vistoria Técnica",
+        descricao: "Análise completa do sistema",
+        icone: <Award size={24} />,
+      },
+    ],
+    sintomas: ["mau cheiro persistente", "ralos entupidos", "água acumulando"],
+    diferencial: "Caminhão de sucção de alta potência para limpeza profunda.",
+    tecnicas: ["Sucção a Vácuo", "Hidrojateamento", "Aplicação de Biológicos"],
+    palavrasChave: ["limpeza caixa de gordura", "caixa de gordura"],
+    iconePrincipal: <Droplets size={28} />,
+  },
+  hidrojateamento: {
+    tituloCompleto: "Hidrojateamento",
+    nomeVariacoes: ["hidrojateamento", "jato de alta pressão"],
+    descricaoCurta:
+      "Limpeza e desentupimento de tubulações com água em alta pressão.",
+    descricaoLonga:
+      "Tecnologia avançada de hidrojateamento que limpa completamente as tubulações sem danificá-las.",
+    beneficios: [
+      {
+        titulo: "Limpeza Profunda",
+        descricao: "Remove 100% dos resíduos",
+        icone: <ShieldCheck size={24} />,
+      },
+      {
+        titulo: "Ecológico",
+        descricao: "Apenas água de alta pressão",
+        icone: <Award size={24} />,
+      },
+      {
+        titulo: "Preventivo",
+        descricao: "Evita novos entupimentos",
+        icone: <Clock size={24} />,
+      },
+    ],
+    sintomas: [
+      "entupimentos recorrentes",
+      "água escoando devagar",
+      "tubulação antiga",
+    ],
+    diferencial: "Pressão de até 3000 PSI para limpeza total.",
+    tecnicas: ["Hidrojateamento de Alta Pressão", "Videoscopia Pós-Serviço"],
+    palavrasChave: ["hidrojateamento", "jato de alta pressão"],
+    iconePrincipal: <Droplets size={28} />,
+  },
+  videoscopia: {
+    tituloCompleto: "Videoscopia",
+    nomeVariacoes: ["videoscopia", "inspeção por câmera"],
+    descricaoCurta:
+      "Inspeção interna de tubulações com câmera de alta definição.",
+    descricaoLonga:
+      "Diagnóstico preciso através de câmera que percorre toda a tubulação identificando o problema exato.",
+    beneficios: [
+      {
+        titulo: "Diagnóstico Preciso",
+        descricao: "Identifica a causa exata",
+        icone: <Camera size={24} />,
+      },
+      {
+        titulo: "Não Invasivo",
+        descricao: "Sem necessidade de quebra",
+        icone: <ShieldCheck size={24} />,
+      },
+      {
+        titulo: "Relatório Detalhado",
+        descricao: "Gravação do serviço",
+        icone: <Award size={24} />,
+      },
+    ],
+    sintomas: [
+      "entupimento sem causa aparente",
+      "problemas recorrentes",
+      "tubulação muito antiga",
+    ],
+    diferencial: "Câmera de 360° com gravação em Full HD.",
+    tecnicas: [
+      "Inspeção com Câmera",
+      "Mapeamento de Tubulação",
+      "Laudo Técnico",
+    ],
+    palavrasChave: ["videoscopia", "inspeção de esgoto"],
+    iconePrincipal: <Camera size={28} />,
+  },
 };
 
 const SolucaoBairroPage: React.FC = () => {
@@ -136,6 +316,33 @@ const SolucaoBairroPage: React.FC = () => {
     "Vila Olímpia",
   ];
 
+  const steps = [
+    {
+      step: "01",
+      icon: <PhoneCall className="w-6 h-6 sm:w-7 sm:h-7" />,
+      title: "Solicitação",
+      desc: "Contato via WhatsApp ou telefone para análise inicial da emergência",
+    },
+    {
+      step: "02",
+      icon: <MapPin className="w-6 h-6 sm:w-7 sm:h-7" />,
+      title: "Deslocamento",
+      desc: `Técnico mais próximo é acionado e chega em ${bairroData.nome} em até 40 minutos`,
+    },
+    {
+      step: "03",
+      icon: <DollarSign className="w-6 h-6 sm:w-7 sm:h-7" />,
+      title: "Diagnóstico",
+      desc: "Avaliação técnica gratuita com orçamento transparente e sem surpresas",
+    },
+    {
+      step: "04",
+      icon: <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7" />,
+      title: "Solução Garantida",
+      desc: "Execução profissional com equipamentos modernos e garantia por escrito",
+    },
+  ];
+
   return (
     <>
       <Helmet>
@@ -155,7 +362,7 @@ const SolucaoBairroPage: React.FC = () => {
               backgroundPosition: isMobile ? "65% center" : "center",
             }}
           >
-            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90 md:bg-gradient-to-r md:from-black/85 md:via-black/60 md:to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 md:bg-gradient-to-r md:from-black/80 md:via-black/50 md:to-transparent" />
 
             {/* Botões flutuantes */}
             <div className="absolute top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 z-20 flex flex-wrap justify-between items-center gap-3">
@@ -163,7 +370,7 @@ const SolucaoBairroPage: React.FC = () => {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="bg-black/40 backdrop-blur-sm border-white/20 text-white hover:bg-black/60 text-xs sm:text-sm"
+                  className="bg-black/40 backdrop-blur-sm border-white/30 text-white hover:bg-black/60 text-xs sm:text-sm"
                 >
                   <Home className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                   <span className="hidden xs:inline">Início</span>
@@ -174,7 +381,7 @@ const SolucaoBairroPage: React.FC = () => {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="bg-black/40 backdrop-blur-sm border-white/20 text-white hover:bg-black/60 text-xs sm:text-sm"
+                  className="bg-black/40 backdrop-blur-sm border-white/30 text-white hover:bg-black/60 text-xs sm:text-sm"
                 >
                   <MapPin className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                   <span className="hidden xs:inline">Trocar Bairro</span>
@@ -215,10 +422,9 @@ const SolucaoBairroPage: React.FC = () => {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.1 }}
-                    className="inline-flex items-center gap-2 bg-primary/30 backdrop-blur-sm border border-white/20 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold tracking-wide uppercase"
+                    className="inline-block bg-primary/30 backdrop-blur-sm border border-white/20 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-bold tracking-wide uppercase"
                   >
-                    <div className="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse" />
-                    <MapPin className="w-3 h-3" />
+                    <span className="animate-pulse inline-block mr-1">⚡</span>
                     <span>Atendimento 24h na {bairroData.regiao}</span>
                   </motion.div>
 
@@ -258,18 +464,18 @@ const SolucaoBairroPage: React.FC = () => {
                       rel="noopener noreferrer"
                       className="w-full xs:w-auto"
                     >
-                      <Button className="w-full bg-gradient-to-r from-success to-success/80 hover:from-success/90 hover:to-success text-white font-bold h-11 sm:h-14 px-4 sm:px-8 text-sm sm:text-base shadow-lg">
-                        <Zap size={isMobile ? 16 : 18} className="mr-2" />
-                        Solicitar Agora
+                      <Button className="w-full bg-success hover:bg-success/90 text-white font-bold flex items-center justify-center gap-2 h-11 sm:h-14 px-4 sm:px-6 md:px-8 text-sm sm:text-base md:text-lg shadow-lg shadow-success/20 hover:scale-105 transition-transform duration-300">
+                        <WhatsAppIcon size={isMobile ? 18 : 20} />
+                        <span className="whitespace-nowrap">WhatsApp 24h</span>
                       </Button>
                     </a>
                     <a href="tel:+5511948202927" className="w-full xs:w-auto">
                       <Button
                         variant="outline"
-                        className="w-full border-white text-white hover:bg-white hover:text-primary font-bold h-11 sm:h-14 px-4 sm:px-8 text-sm sm:text-base transition-all"
+                        className="w-full border-white text-white hover:bg-white hover:text-primary font-bold flex items-center justify-center gap-2 h-11 sm:h-14 px-4 sm:px-6 md:px-8 text-sm sm:text-base md:text-lg transition-all duration-300"
                       >
-                        <Phone size={isMobile ? 16 : 18} className="mr-2" />
-                        (11) 94820-2927
+                        <span>📞</span>
+                        <span className="whitespace-nowrap">Ligar Agora</span>
                       </Button>
                     </a>
                   </div>
@@ -292,7 +498,7 @@ const SolucaoBairroPage: React.FC = () => {
                         <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-secondary flex items-center justify-center text-[8px] sm:text-[10px] font-bold text-white">
                           ✓
                         </div>
-                        <span className="text-[10px] sm:text-xs font-medium">
+                        <span className="text-[10px] sm:text-xs md:text-sm font-medium">
                           {feature}
                         </span>
                       </motion.div>
@@ -303,9 +509,57 @@ const SolucaoBairroPage: React.FC = () => {
             </div>
           </section>
 
-          {/* Seção de Sintomas - Mobile First */}
-          <section className="py-12 sm:py-16 md:py-20">
-            <div className="container px-4 sm:px-6 max-w-5xl mx-auto">
+          {/* Benefícios Grid - Mobile First */}
+          <section className="py-12 sm:py-16 md:py-20 lg:py-32 bg-muted/5">
+            <div className="container px-4 sm:px-6">
+              <motion.div
+                {...fadeIn}
+                className="text-center mb-8 sm:mb-12 md:mb-16"
+              >
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
+                  Vantagens do nosso{" "}
+                  <span className="text-primary underline decoration-secondary decoration-4 underline-offset-4 sm:underline-offset-8">
+                    atendimento em {bairroData.nome}
+                  </span>
+                </h2>
+                <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
+                  Atendimento localizado com a qualidade e agilidade PROTEC
+                </p>
+              </motion.div>
+
+              <motion.div
+                variants={staggerContainer}
+                initial="initial"
+                whileInView="whileInView"
+                viewport={{ once: true, margin: "-50px" }}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
+              >
+                {solucaoContent.beneficios.map(
+                  (beneficio: any, idx: number) => (
+                    <motion.div
+                      key={idx}
+                      variants={fadeIn}
+                      className="group bg-card p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-sm border border-border hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                    >
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 sm:mb-6 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        {beneficio.icone}
+                      </div>
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-foreground mb-2 sm:mb-3">
+                        {beneficio.titulo}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                        {beneficio.descricao}
+                      </p>
+                    </motion.div>
+                  )
+                )}
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Seção de Sintomas e Diferencial */}
+          <section className="py-12 sm:py-16 md:py-20 lg:py-24">
+            <div className="container px-4 sm:px-6 max-w-6xl mx-auto">
               <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12">
                 <motion.div {...fadeIn}>
                   <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
@@ -313,7 +567,7 @@ const SolucaoBairroPage: React.FC = () => {
                       <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                     </div>
                     <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-card-foreground">
-                      Sinais de Alerta
+                      Sinais de Alerta em {bairroData.nome}
                     </h2>
                   </div>
                   <ul className="space-y-3 sm:space-y-4">
@@ -345,41 +599,216 @@ const SolucaoBairroPage: React.FC = () => {
                       {solucaoContent.iconePrincipal}
                     </div>
                     <h3 className="text-base sm:text-lg md:text-xl font-bold text-card-foreground">
-                      Por que a PROTEC?
+                      Por que a PROTEC é a escolha certa?
                     </h3>
                   </div>
-                  <ul className="space-y-3">
+                  <ul className="space-y-4">
                     <li className="flex items-start gap-2 sm:gap-3">
                       <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5" />
                       <span className="text-xs sm:text-sm text-muted-foreground">
-                        +10 anos na {bairroData.regiao}
+                        +10 anos de experiência na {bairroData.regiao}
                       </span>
                     </li>
                     <li className="flex items-start gap-2 sm:gap-3">
                       <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5" />
                       <span className="text-xs sm:text-sm text-muted-foreground">
-                        Chegada em 40min em {bairroData.nome}
+                        Chegada garantida em até 40 minutos em {bairroData.nome}
                       </span>
                     </li>
                     <li className="flex items-start gap-2 sm:gap-3">
                       <Award className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5" />
                       <span className="text-xs sm:text-sm text-muted-foreground">
-                        Garantia de satisfação
+                        Garantia de satisfação por escrito
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2 sm:gap-3">
+                      <BadgeCheck className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5" />
+                      <span className="text-xs sm:text-sm text-muted-foreground">
+                        Equipamentos modernos e equipe certificada
                       </span>
                     </li>
                   </ul>
+
+                  {/* Citação */}
+                  <div className="mt-6 pt-4 border-t border-border">
+                    <p className="text-muted-foreground italic text-xs sm:text-sm">
+                      "Compromisso com a qualidade e satisfação total do
+                      cliente. Trabalhamos com garantia por escrito em todos os
+                      serviços."
+                    </p>
+                    <p className="text-[10px] font-bold text-primary mt-2 uppercase tracking-wider">
+                      — Equipe PROTEC
+                    </p>
+                  </div>
                 </motion.div>
               </div>
             </div>
           </section>
 
-          {/* Metodologia - Cards Profissionais */}
-          <section className="py-12 sm:py-16 md:py-20 bg-muted/5">
+          {/* Metodologia - Como Funciona (mesmo padrão do SolucaoPage) */}
+          <section
+            id="como-funciona"
+            className="relative py-16 sm:py-20 md:py-28 lg:py-36 bg-card/40 backdrop-blur-sm border-y border-border text-white overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-secondary/20 via-transparent to-transparent" />
+            <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
+            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/10 rounded-full blur-3xl" />
+
+            <div className="container relative z-10 px-4 sm:px-6">
+              <motion.div
+                {...fadeIn}
+                className="text-center mb-12 sm:mb-16 md:mb-20"
+              >
+                <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm border border-primary/30 px-4 py-2 rounded-full mb-6">
+                  <span className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
+                  <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white/90">
+                    Metodologia Exclusiva
+                  </span>
+                </div>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                  Como funciona nosso{" "}
+                  <span className="text-primary relative inline-block">
+                    atendimento em {bairroData.nome}
+                    <svg
+                      className="absolute -bottom-2 left-0 w-full h-2"
+                      viewBox="0 0 100 10"
+                      preserveAspectRatio="none"
+                    >
+                      <path
+                        d="M0 5 L100 5"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeDasharray="5 5"
+                        className="text-primary/50"
+                      />
+                    </svg>
+                  </span>
+                </h2>
+                <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
+                  Do primeiro contato à solução final em até 40 minutos
+                </p>
+              </motion.div>
+
+              <div className="relative">
+                <div className="absolute hidden lg:block top-1/2 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-y-1/2" />
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                  {steps.map((item, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{
+                        delay: idx * 0.15,
+                        duration: 0.6,
+                        ease: "easeOut",
+                      }}
+                      className="group relative"
+                    >
+                      <div className="relative h-full p-6 sm:p-7 md:p-8 rounded-2xl bg-card/60 backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-500 hover:transform hover:-translate-y-2">
+                        <div className="absolute -top-3 -right-3 w-12 h-12 rounded-full bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-lg">
+                          <span className="text-white font-black text-sm sm:text-base">
+                            {item.step}
+                          </span>
+                        </div>
+
+                        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-white/20 to-white/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                          <div className="text-white">{item.icon}</div>
+                        </div>
+
+                        <h3 className="text-xl sm:text-2xl font-bold mb-3">
+                          {item.title}
+                        </h3>
+
+                        <p className="text-white/70 text-sm sm:text-base leading-relaxed">
+                          {item.desc}
+                        </p>
+
+                        <div className="mt-5 h-1 w-12 bg-secondary/50 rounded-full group-hover:w-full transition-all duration-500" />
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Estatísticas de confiança */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="mt-16 sm:mt-20 pt-8 border-t border-white/10"
+              >
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+                  {[
+                    {
+                      value: "5.000+",
+                      label: "Serviços Realizados",
+                      icon: "✓",
+                    },
+                    {
+                      value: "40min",
+                      label: "Tempo Médio de Chegada",
+                      icon: "⚡",
+                    },
+                    {
+                      value: "24/7",
+                      label: "Disponibilidade Total",
+                      icon: "🕒",
+                    },
+                    { value: "100%", label: "Clientes Satisfeitos", icon: "★" },
+                  ].map((stat, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: idx * 0.1 }}
+                      className="space-y-2"
+                    >
+                      <p className="text-2xl sm:text-3xl md:text-4xl font-black text-primary">
+                        {stat.value}
+                      </p>
+                      <p className="text-xs sm:text-sm text-white/60 font-medium uppercase tracking-wider">
+                        {stat.label}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-center mt-12 sm:mt-16"
+              >
+                <a
+                  href={`https://wa.me/5511948202927?text=${encodeURIComponent(whatsappMessage)}`}
+                >
+                  <Button className="group relative overflow-hidden bg-white text-primary hover:bg-white/90 font-bold h-12 sm:h-14 px-8 sm:px-12 text-base sm:text-lg shadow-2xl transition-all duration-300">
+                    <span className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-transparent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+                    <WhatsAppIcon size={isMobile ? 20 : 24} className="mr-2" />
+                    <span className="relative z-10">
+                      Solicitar Agora em {bairroData.nome}
+                    </span>
+                    <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </a>
+                <p className="text-white/50 text-xs sm:text-sm mt-4">
+                  *Orçamento gratuito sem compromisso
+                </p>
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Técnicas / Metodologia */}
+          <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-card/20 border-b border-border">
             <div className="container px-4 sm:px-6 max-w-6xl mx-auto">
               <motion.div {...fadeIn} className="text-center mb-8 sm:mb-12">
                 <div className="inline-flex items-center gap-2 bg-primary/10 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4">
+                  <Wrench className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
                   <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-primary">
-                    Metodologia
+                    Tecnologia de Ponta
                   </span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-card-foreground mb-3 sm:mb-4">
@@ -390,25 +819,25 @@ const SolucaoBairroPage: React.FC = () => {
                 </p>
               </motion.div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {solucaoContent.tecnicas
-                  .slice(0, 4)
+                  .slice(0, 3)
                   .map((tecnica: string, index: number) => (
                     <motion.div
                       key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className="flex items-center gap-3 sm:gap-4 bg-white p-3 sm:p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all"
+                      className="flex items-center gap-3 sm:gap-4 bg-card p-4 sm:p-5 rounded-xl shadow-sm border border-border hover:shadow-md transition-all group"
                     >
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Wrench className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-all duration-300">
+                        <Wrench className="w-5 h-5 sm:w-6 sm:h-6 text-primary group-hover:text-white transition-all" />
                       </div>
                       <div>
-                        <h3 className="text-sm sm:text-base font-bold text-gray-900">
+                        <h3 className="text-sm sm:text-base font-bold text-card-foreground">
                           {tecnica}
                         </h3>
-                        <p className="text-[10px] sm:text-xs text-gray-500">
+                        <p className="text-[10px] sm:text-xs text-muted-foreground">
                           Equipamentos modernos
                         </p>
                       </div>
@@ -418,54 +847,14 @@ const SolucaoBairroPage: React.FC = () => {
             </div>
           </section>
 
-          {/* Benefícios - Grid Premium */}
-          <section className="py-12 sm:py-16 md:py-20 bg-white">
-            <div className="container px-4 sm:px-6 max-w-6xl mx-auto">
-              <motion.div {...fadeIn} className="text-center mb-8 sm:mb-12">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
-                  Vantagens em {bairroData.nome}
-                </h2>
-                <p className="text-sm sm:text-base text-gray-600">
-                  Atendimento localizado com qualidade PROTEC
-                </p>
-              </motion.div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
-                {solucaoContent.beneficios.map(
-                  (beneficio: any, idx: number) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: idx * 0.1 }}
-                      className="group bg-white p-5 sm:p-6 rounded-xl border border-gray-100 hover:border-primary/30 hover:shadow-xl transition-all duration-300"
-                    >
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                        <div className="text-primary group-hover:text-white">
-                          {beneficio.icone}
-                        </div>
-                      </div>
-                      <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">
-                        {beneficio.titulo}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                        {beneficio.descricao}
-                      </p>
-                    </motion.div>
-                  )
-                )}
-              </div>
-            </div>
-          </section>
-
           {/* Bairros Próximos - Linkagem Interna */}
-          <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
+          <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-muted/5">
             <div className="container px-4 sm:px-6 max-w-5xl mx-auto">
               <motion.div {...fadeIn} className="text-center mb-6 sm:mb-8">
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-3">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-card-foreground mb-2 sm:mb-3">
                   Atendemos também na região
                 </h2>
-                <p className="text-xs sm:text-sm text-gray-600">
+                <p className="text-xs sm:text-sm text-muted-foreground">
                   Atendimento rápido em toda {bairroData.regiao}
                 </p>
               </motion.div>
@@ -476,7 +865,7 @@ const SolucaoBairroPage: React.FC = () => {
                     key={idx}
                     href={`/solucoes/${solucaoSlug}/${bairro.toLowerCase().replace(/\s+/g, "-")}`}
                   >
-                    <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-white border border-gray-200 rounded-full text-[11px] sm:text-sm text-gray-600 hover:bg-primary hover:text-white hover:border-primary transition-all cursor-pointer">
+                    <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-card border border-border rounded-full text-[11px] sm:text-sm text-muted-foreground hover:bg-primary hover:text-white hover:border-primary transition-all cursor-pointer">
                       {bairro}
                     </span>
                   </Link>
@@ -485,35 +874,99 @@ const SolucaoBairroPage: React.FC = () => {
             </div>
           </section>
 
+          {/* Selos de segurança */}
+          <section className="py-8 sm:py-12 bg-card border-y border-border">
+            <div className="container px-4 sm:px-6">
+              <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
+                {[
+                  { icon: "🔒", text: "Dados Protegidos" },
+                  { icon: "📋", text: "Garantia por Escrito" },
+                  { icon: "🏆", text: "Melhor Avaliado" },
+                  { icon: "⚡", text: "Atendimento 24h" },
+                  { icon: "📍", text: `Cobertura em ${bairroData.nome}` },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2">
+                    <span className="text-lg sm:text-xl">{item.icon}</span>
+                    <span className="text-[10px] sm:text-xs text-muted-foreground font-medium">
+                      {item.text}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
           {/* CTA Final Premium */}
-          <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-primary to-primary/90 text-white">
-            <div className="container px-4 sm:px-6 text-center max-w-4xl mx-auto">
+          {/* CTA Final - Padrão Dark (como a seção Quem Somos do SolucaoPage) */}
+          <section className="relative py-16 sm:py-20 md:py-28 lg:py-36 bg-card/20 backdrop-blur-sm border-y border-border overflow-hidden">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
+
+            <div
+              className="absolute inset-0 opacity-10"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle, #1e293b 1px, transparent 1px)",
+                backgroundSize: "24px 24px",
+              }}
+            />
+
+            <div className="container relative z-10 px-4 sm:px-6 text-center max-w-4xl mx-auto">
               <motion.div {...fadeIn}>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
-                  Precisa de {solucaoContent.tituloCompleto} em{" "}
-                  {bairroData.nome}?
+                <div className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+                  </span>
+                  <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-primary">
+                    Atendimento 24h em {bairroData.nome}
+                  </span>
+                </div>
+
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-card-foreground mb-4">
+                  Precisa de{" "}
+                  <span className="text-primary relative inline-block">
+                    {solucaoContent.tituloCompleto} em {bairroData.nome}?
+                    <svg
+                      className="absolute -bottom-2 left-0 w-full h-3 -z-0"
+                      viewBox="0 0 100 10"
+                      preserveAspectRatio="none"
+                    >
+                      <path
+                        d="M0 5 L100 5"
+                        stroke="currentColor"
+                        strokeWidth="8"
+                        strokeLinecap="round"
+                        className="text-primary/20"
+                      />
+                    </svg>
+                  </span>
                 </h2>
-                <p className="text-sm sm:text-base md:text-lg text-white/80 mb-6 sm:mb-8">
-                  Atendimento imediato. Ligue agora ou chame no WhatsApp!
+
+                <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-8 sm:mb-10 max-w-2xl mx-auto">
+                  Atendimento imediato em {bairroData.nome}. Ligue agora ou
+                  chame no WhatsApp!
                 </p>
 
-                <div className="flex flex-col xs:flex-row justify-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+                <div className="flex flex-col xs:flex-row justify-center gap-3 sm:gap-4 mb-8">
                   <a
                     href={`https://wa.me/5511948202927?text=${encodeURIComponent(whatsappMessage)}`}
                     className="w-full xs:w-auto"
                   >
-                    <Button className="w-full bg-success hover:bg-success/90 text-white font-bold h-11 sm:h-14 px-5 sm:px-8 text-sm sm:text-base shadow-xl">
+                    <Button className="group relative overflow-hidden w-full bg-gradient-to-r from-success to-success/80 hover:from-success/90 hover:to-success text-white font-bold h-12 sm:h-14 px-6 sm:px-8 shadow-lg transition-all duration-300 group-hover:shadow-xl">
+                      <span className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-transparent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
                       <WhatsAppIcon
                         size={isMobile ? 18 : 20}
-                        className="mr-2"
+                        className="mr-2 relative z-10"
                       />
-                      WhatsApp 24h
+                      <span className="relative z-10">WhatsApp 24h</span>
+                      <ArrowRight className="ml-2 w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </a>
                   <a href="tel:+5511948202927" className="w-full xs:w-auto">
                     <Button
                       variant="outline"
-                      className="w-full border-white text-white hover:bg-white hover:text-primary font-bold h-11 sm:h-14 px-5 sm:px-8 text-sm sm:text-base"
+                      className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold h-12 sm:h-14 px-6 sm:px-8 transition-all duration-300"
                     >
                       <Phone size={isMobile ? 16 : 18} className="mr-2" />
                       (11) 94820-2927
@@ -521,11 +974,21 @@ const SolucaoBairroPage: React.FC = () => {
                   </a>
                 </div>
 
-                <div className="flex flex-wrap justify-center gap-3 sm:gap-4 text-[10px] sm:text-xs text-white/60">
-                  <span>✓ Atendimento 24h</span>
-                  <span>✓ Visita gratuita</span>
-                  <span>✓ Orçamento sem compromisso</span>
-                  <span>✓ Garantia por escrito</span>
+                {/* Selos de segurança */}
+                <div className="flex flex-wrap justify-center gap-4 sm:gap-6 pt-4 border-t border-border/50">
+                  {[
+                    { icon: "🔒", text: "Dados Protegidos" },
+                    { icon: "📋", text: "Garantia por Escrito" },
+                    { icon: "🏆", text: "Melhor Avaliado" },
+                    { icon: "⚡", text: "Atendimento 24h" },
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-2">
+                      <span className="text-sm sm:text-base">{item.icon}</span>
+                      <span className="text-[10px] sm:text-xs text-muted-foreground font-medium">
+                        {item.text}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             </div>

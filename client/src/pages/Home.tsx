@@ -96,7 +96,7 @@ export default function Home() {
   const services = [
     {
       image:
-        "https://d2xsxph8kpxj0f.cloudfront.net/310519663060650935/K9o8LWiVmPpHSveFtHmbjC/service-pia.jpg",
+        "https://protecdesentupidora.com.br/wp-content/uploads/2024/08/DesentupimentodeEsgoto-Mestre-2.webp",
       title: "Desentupimento de Pia",
       description:
         "Pias de cozinha, banheiro e área de serviço com rapidez e limpeza.",
@@ -104,7 +104,7 @@ export default function Home() {
     },
     {
       image:
-        "https://d2xsxph8kpxj0f.cloudfront.net/310519663060650935/K9o8LWiVmPpHSveFtHmbjC/service-vaso.jpg",
+        "https://protecdesentupidora.com.br/wp-content/uploads/2024/08/DesentupimentodeEsgoto-Mestre-1.webp",
       title: "Vaso Sanitário",
       description:
         "Atendimento emergencial para entupimentos e retorno de água.",
@@ -112,28 +112,28 @@ export default function Home() {
     },
     {
       image:
-        "https://d2xsxph8kpxj0f.cloudfront.net/310519663060650935/K9o8LWiVmPpHSveFtHmbjC/service-ralo.jpg",
+        "https://protecdesentupidora.com.br/wp-content/uploads/2024/08/DesentupimentodeEsgoto-Mestre-3.webp",
       title: "Ralos e Box",
       description: "Banheiros, áreas externas, lavanderias e garagens.",
       slug: "ralos-e-box",
     },
     {
       image:
-        "https://d2xsxph8kpxj0f.cloudfront.net/310519663060650935/K9o8LWiVmPpHSveFtHmbjC/service-esgoto.jpg",
+        "https://protecdesentupidora.com.br/wp-content/uploads/2024/08/DesentupimentodeEsgoto-Mestre.webp",
       title: "Esgoto e Tubulação",
       description: "Rede de esgoto, colunas de prédios e mau cheiro.",
       slug: "esgoto-e-tubulacao",
     },
     {
       image:
-        "https://d2xsxph8kpxj0f.cloudfront.net/310519663060650935/K9o8LWiVmPpHSveFtHmbjC/service-fossa.jpg",
+        "https://protecdesentupidora.com.br/wp-content/uploads/2024/08/DesentupimentodeEsgoto-Mestre-5.webp",
       title: "Caixa de Gordura",
       description: "Limpeza completa, higienização e prevenção.",
       slug: "caixa-de-gordura",
     },
     {
       image:
-        "https://d2xsxph8kpxj0f.cloudfront.net/310519663060650935/K9o8LWiVmPpHSveFtHmbjC/service-hidrojato.jpg",
+        "https://protecdesentupidora.com.br/wp-content/uploads/2024/08/DesentupimentodeEsgoto-Mestre-4.webp",
       title: "Hidrojateamento",
       description: "Alta pressão para limpeza de tubulações industriais.",
       slug: "hidrojateamento",
@@ -521,7 +521,7 @@ export default function Home() {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-10" />
                 <img
-                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663060650935/K9o8LWiVmPpHSveFtHmbjC/quem-somos.jpg"
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663060650935/K9o8LWiVmPpHSveFtHmbjC/service-hero-Z3GFRvVZtAxWczyfedAYGy.webp"
                   alt="Equipe técnica especializada da PROTEC"
                   className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
                   loading="lazy"
@@ -628,7 +628,7 @@ export default function Home() {
               </p>
 
               {/* Bloco de citação */}
-              <div className="bg-card rounded-2xl p-5 sm:p-6 border-l-4 border-primary border-t border-r border-b border-border">
+              <div className="bg-card rounded-2xl p-5 sm:p-6 border-l-4 border-primary border-t border-r border-b-primary/20">
                 <p className="text-muted-foreground italic text-sm sm:text-base">
                   "Compromisso com a qualidade e satisfação total do cliente.
                   Trabalhamos com garantia por escrito em todos os serviços."

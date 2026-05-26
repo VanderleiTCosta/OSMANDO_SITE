@@ -17,7 +17,8 @@ import {
   Wrench,
   Truck,
   BadgeCheck,
-  Calendar,
+  CheckCircle,
+  DollarSign,
   Star,
   Headphones,
   Home,
@@ -338,152 +339,416 @@ const SolucaoPage: React.FC = () => {
           </section>
 
           {/* Como Funciona Section - Mobile First */}
-          <section className="py-12 sm:py-16 md:py-20 lg:py-32 bg-primary text-white">
-            <div className="container px-4 sm:px-6">
+          <section
+            id="como-funciona"
+            className="relative py-16 sm:py-20 md:py-28 lg:py-36 bg-card/40 backdrop-blur-sm border-y border-border text-white overflow-hidden"
+          >
+            {/* Elementos decorativos de fundo */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-secondary/20 via-transparent to-transparent" />
+            <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
+            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/10 rounded-full blur-3xl" />
+
+            <div className="container relative z-10 px-4 sm:px-6">
+              {/* Cabeçalho com linha decorativa */}
               <motion.div
                 {...fadeIn}
-                className="text-center mb-8 sm:mb-12 md:mb-16"
+                className="text-center mb-12 sm:mb-16 md:mb-20"
               >
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
-                  Atendimento em 4 Passos
+                <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm border border-primary/30 px-4 py-2 rounded-full mb-6">
+                  <span className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
+                  <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white/90">
+                    Metodologia Exclusiva
+                  </span>
+                </div>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                  Atendimento em{" "}
+                  <span className="text-primary relative inline-block">
+                    4 Passos
+                    <svg
+                      className="absolute -bottom-2 left-0 w-full h-2"
+                      viewBox="0 0 100 10"
+                      preserveAspectRatio="none"
+                    >
+                      <path
+                        d="M0 5 L100 5"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeDasharray="5 5"
+                        className="text-primary/50"
+                      />
+                    </svg>
+                  </span>
                 </h2>
-                <p className="text-sm sm:text-base md:text-lg text-white/70 max-w-2xl mx-auto px-2">
-                  Simplicidade e transparência do início ao fim.
+                <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
+                  Simplicidade, transparência e agilidade do primeiro contato à
+                  solução final
                 </p>
               </motion.div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 relative">
-                {steps.map((step, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ delay: idx * 0.1, duration: 0.5 }}
-                    className="text-center group relative z-10 p-4 sm:p-5 md:p-6 bg-white/10 rounded-xl border border-white/10 shadow-lg backdrop-blur-sm"
-                  >
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full bg-secondary text-white flex items-center justify-center text-2xl sm:text-3xl font-bold mx-auto mb-3 sm:mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300">
-                      {step.icon}
-                    </div>
-                    <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2">
-                      {step.title}
-                    </h3>
-                    <p className="text-white/70 text-xs sm:text-sm leading-relaxed">
-                      {step.description}
-                    </p>
-                  </motion.div>
-                ))}
+              {/* Timeline / Passos */}
+              <div className="relative">
+                {/* Linha de conexão desktop */}
+                <div className="absolute hidden lg:block top-1/2 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-y-1/2" />
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                  {[
+                    {
+                      step: "01",
+                      icon: <PhoneCall className="w-6 h-6 sm:w-7 sm:h-7" />,
+                      title: "Solicitação",
+                      desc: "Contato via WhatsApp ou telefone para análise inicial da emergência",
+                      color: "from-blue-500/20 to-blue-600/20",
+                    },
+                    {
+                      step: "02",
+                      icon: <MapPin className="w-6 h-6 sm:w-7 sm:h-7" />,
+                      title: "Deslocamento",
+                      desc: "Técnico mais próximo é acionado e chega ao local em até 40 minutos",
+                      color: "from-green-500/20 to-green-600/20",
+                    },
+                    {
+                      step: "03",
+                      icon: <DollarSign className="w-6 h-6 sm:w-7 sm:h-7" />,
+                      title: "Diagnóstico",
+                      desc: "Avaliação técnica gratuita com orçamento transparente e sem surpresas",
+                      color: "from-yellow-500/20 to-yellow-600/20",
+                    },
+                    {
+                      step: "04",
+                      icon: <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7" />,
+                      title: "Solução Garantida",
+                      desc: "Execução profissional com equipamentos modernos e garantia por escrito",
+                      color: "from-purple-500/20 to-purple-600/20",
+                    },
+                  ].map((item, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{
+                        delay: idx * 0.15,
+                        duration: 0.6,
+                        ease: "easeOut",
+                      }}
+                      className="group relative"
+                    >
+                      {/* Card com efeito glassmorphism */}
+                      <div className="relative h-full p-6 sm:p-7 md:p-8 rounded-2xl bg-card/60 backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-500 hover:transform hover:-translate-y-2">
+                        {/* Número do passo flutuante */}
+                        <div className="absolute -top-3 -right-3 w-12 h-12 rounded-full bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-lg">
+                          <span className="text-white font-black text-sm sm:text-base">
+                            {item.step}
+                          </span>
+                        </div>
+
+                        {/* Ícone */}
+                        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-white/20 to-white/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                          <div className="text-white">{item.icon}</div>
+                        </div>
+
+                        {/* Título */}
+                        <h3 className="text-xl sm:text-2xl font-bold mb-3">
+                          {item.title}
+                        </h3>
+
+                        {/* Descrição */}
+                        <p className="text-white/70 text-sm sm:text-base leading-relaxed">
+                          {item.desc}
+                        </p>
+
+                        {/* Linha de progresso animada */}
+                        <div className="mt-5 h-1 w-12 bg-secondary/50 rounded-full group-hover:w-full transition-all duration-500" />
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
 
+              {/* Estatísticas de confiança */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-center mt-8 sm:mt-12 md:mt-16"
+                className="mt-16 sm:mt-20 pt-8 border-t border-white/10"
               >
-                <a href="https://wa.me/5511948202927?text=Preciso%20de%20atendimento%20urgente">
-                  <Button className="bg-success hover:bg-success/90 text-white font-bold flex items-center gap-2 h-11 sm:h-14 px-6 sm:px-8 md:px-10 text-sm sm:text-base md:text-lg shadow-xl shadow-black/20 mx-auto">
-                    <WhatsAppIcon size={isMobile ? 18 : 24} />
-                    Solicitar Atendimento Agora
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+                  {[
+                    {
+                      value: "5.000+",
+                      label: "Serviços Realizados",
+                      icon: "✓",
+                    },
+                    {
+                      value: "40min",
+                      label: "Tempo Médio de Chegada",
+                      icon: "⚡",
+                    },
+                    {
+                      value: "24/7",
+                      label: "Disponibilidade Total",
+                      icon: "🕒",
+                    },
+                    { value: "100%", label: "Clientes Satisfeitos", icon: "★" },
+                  ].map((stat, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: idx * 0.1 }}
+                      className="space-y-2"
+                    >
+                      <p className="text-2xl sm:text-3xl md:text-4xl font-black text-primary">
+                        {stat.value}
+                      </p>
+                      <p className="text-xs sm:text-sm text-white/60 font-medium uppercase tracking-wider">
+                        {stat.label}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* CTA Principal */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-center mt-12 sm:mt-16"
+              >
+                <a href="https://wa.me/5511948202927">
+                  <Button className="group relative overflow-hidden bg-white text-primary hover:bg-white/90 font-bold h-12 sm:h-14 px-8 sm:px-12 text-base sm:text-lg shadow-2xl transition-all duration-300">
+                    <span className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-transparent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+                    <WhatsAppIcon size={isMobile ? 20 : 24} className="mr-2" />
+                    <span className="relative z-10">Começar pelo WhatsApp</span>
+                    <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </a>
+                <p className="text-white/50 text-xs sm:text-sm mt-4">
+                  *Orçamento gratuito sem compromisso
+                </p>
               </motion.div>
             </div>
           </section>
 
           {/* Seção de Diferenciais Adicionais */}
-          <section className="py-12 sm:py-16 md:py-20 lg:py-32 bg-white">
-            <div className="container px-4 sm:px-6 max-w-5xl">
-              <motion.div
-                {...fadeIn}
-                className="text-center mb-8 sm:mb-12 md:mb-16"
-              >
-                <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-bold mb-4 sm:mb-6">
-                  <Star className="w-3 h-3 sm:w-4 sm:h-4" />
-                  <span>Referência em São Paulo</span>
-                </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
-                  Compromisso com a Excelência
-                </h2>
-                <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto px-2">
-                  Somos especialistas em {solucaoData.titulo.toLowerCase()} com
-                  mais de 10 anos de experiência no mercado.
-                </p>
-              </motion.div>
+          <section
+            id="quem-somos"
+            className="relative py-16 sm:py-20 md:py-28 lg:py-36 bg-card/20 backdrop-blur-sm border-y border-border overflow-hidden"
+          >
+            {/* Elementos decorativos */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
 
-              <div className="flex flex-col md:grid md:grid-cols-2 gap-8 sm:gap-12">
-                <motion.div {...fadeIn} className="space-y-3 sm:space-y-4">
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-4">
-                    Nossos Compromissos
-                  </h3>
-                  <ul className="space-y-2 sm:space-y-3">
-                    {[
-                      "Atendimento 24 horas por dia, 7 dias por semana",
-                      "Profissionais treinados e uniformizados",
-                      "Equipamentos modernos e certificados",
-                      "Orçamento sem compromisso e sem custo",
-                      "Garantia por escrito em todos os serviços",
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-start gap-2 sm:gap-3">
-                        <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-success mt-0.5 flex-shrink-0" />
-                        <span className="text-xs sm:text-sm text-muted-foreground">
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+            {/* Padrão decorativo simples - sem erros de sintaxe */}
+            <div
+              className="absolute inset-0 opacity-10"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle, #1e293b 1px, transparent 1px)",
+                backgroundSize: "24px 24px",
+              }}
+            />
+
+            <div className="container relative z-10 px-4 sm:px-6">
+              <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                {/* Image com efeito moderno */}
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="relative"
+                >
+                  {/* Moldura decorativa */}
+                  <div className="absolute -top-6 -left-6 w-32 h-32 border-2 border-secondary/20 rounded-2xl -z-10" />
+                  <div className="absolute -bottom-6 -right-6 w-32 h-32 border-2 border-primary/20 rounded-2xl -z-10" />
+
+                  {/* Badge flutuante */}
+                  <div className="absolute -top-4 -right-4 z-10 bg-card border border-border rounded-xl shadow-xl p-3 hidden sm:block">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 bg-success/10 rounded-full flex items-center justify-center">
+                        <span className="text-success text-sm">✓</span>
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-card-foreground">
+                          Certificada
+                        </p>
+                        <p className="text-[10px] text-muted-foreground">
+                          ISO 9001
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Imagem principal */}
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-10" />
+                    <img
+                      src="https://d2xsxph8kpxj0f.cloudfront.net/310519663060650935/K9o8LWiVmPpHSveFtHmbjC/service-hero-Z3GFRvVZtAxWczyfedAYGy.webp"
+                      alt="Equipe técnica especializada da PROTEC"
+                      className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+                      width="600"
+                      height="500"
+                    />
+
+                    {/* Card de experiência sobreposto */}
+                    <div className="absolute bottom-6 left-6 right-6 bg-card/95 backdrop-blur-sm border border-border rounded-xl p-4 shadow-xl z-20">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-3xl sm:text-4xl font-black text-primary">
+                            +10
+                          </p>
+                          <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
+                            Anos de mercado
+                          </p>
+                        </div>
+                        <div className="w-px h-10 bg-border" />
+                        <div>
+                          <p className="text-3xl sm:text-4xl font-black text-primary">
+                            +5k
+                          </p>
+                          <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
+                            Clientes atendidos
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </motion.div>
 
-                <motion.div {...fadeIn} className="space-y-3 sm:space-y-4">
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-4">
-                    Por que nos escolhem
-                  </h3>
-                  <ul className="space-y-2 sm:space-y-3">
+                {/* Content */}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="space-y-6 sm:space-y-8"
+                >
+                  {/* Selo de qualidade */}
+                  <div className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm px-4 py-2 rounded-full">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+                    </span>
+                    <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-primary">
+                      Líder em São Paulo
+                    </span>
+                  </div>
+
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-card-foreground leading-tight">
+                    Excelência em{" "}
+                    <span className="relative inline-block">
+                      <span className="text-primary relative z-10">
+                        Desentupimento 24h
+                      </span>
+                      <svg
+                        className="absolute bottom-2 left-0 w-full h-3 -z-0"
+                        viewBox="0 0 100 10"
+                        preserveAspectRatio="none"
+                      >
+                        <path
+                          d="M0 5 L100 5"
+                          stroke="currentColor"
+                          strokeWidth="8"
+                          strokeLinecap="round"
+                          className="text-primary/20"
+                        />
+                      </svg>
+                    </span>
+                  </h2>
+
+                  {/* Diferenciais em bullets */}
+                  <div className="space-y-4">
                     {[
-                      "Maior índice de satisfação do mercado",
-                      "Resolução definitiva do problema",
-                      "Tecnologia que evita quebra-quebra",
-                      "Transparência total no orçamento",
-                      "Atendimento personalizado e humanizado",
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-start gap-2 sm:gap-3">
-                        <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-success mt-0.5 flex-shrink-0" />
-                        <span className="text-xs sm:text-sm text-muted-foreground">
+                      "Equipe técnica altamente capacitada e certificada",
+                      "Equipamentos de última geração e tecnologia avançada",
+                      "Atendimento humanizado com transparência total",
+                    ].map((item, idx) => (
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: idx * 0.1 }}
+                        className="flex items-start gap-3"
+                      >
+                        <div className="w-6 h-6 rounded-full bg-success/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <CheckCircle className="w-4 h-4 text-success" />
+                        </div>
+                        <p className="text-sm sm:text-base text-muted-foreground">
                           {item}
-                        </span>
-                      </li>
+                        </p>
+                      </motion.div>
                     ))}
-                  </ul>
+                  </div>
+
+                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                    A{" "}
+                    <span className="font-bold text-card-foreground">
+                      PROTEC
+                    </span>{" "}
+                    se consolidou como referência no setor de desentupimento em
+                    São Paulo, atendendo com excelência residências, comércios,
+                    condomínios e indústrias. Nossa missão é oferecer soluções
+                    rápidas, eficientes e com total transparência.
+                  </p>
+
+                  {/* Bloco de citação */}
+                  <div className="bg-card rounded-2xl p-5 sm:p-6 border-l-4 border-primary border-t border-r border-b-primary/20">
+                    <p className="text-muted-foreground italic text-sm sm:text-base">
+                      "Compromisso com a qualidade e satisfação total do
+                      cliente. Trabalhamos com garantia por escrito em todos os
+                      serviços."
+                    </p>
+                    <p className="text-xs font-bold text-primary mt-3 uppercase tracking-wider">
+                      — Equipe PROTEC
+                    </p>
+                  </div>
+
+                  {/* CTA Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
+                    <a
+                      href="https://wa.me/5511948202927"
+                      className="group w-full sm:w-auto"
+                    >
+                      <Button className="w-full bg-gradient-to-r from-success to-success/80 hover:from-success/90 hover:to-success text-primary hover:text-white font-bold h-12 sm:h-14 px-6 sm:px-8 shadow-lg transition-all duration-300 group-hover:shadow-xl">
+                        <WhatsAppIcon
+                          size={isMobile ? 18 : 20}
+                          className="mr-2"
+                        />
+                        Orçamento Grátis
+                        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </a>
+                    <a href="tel:+5511948202927" className="w-full sm:w-auto">
+                      <Button
+                        variant="outline"
+                        className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold h-12 sm:h-14 px-6 sm:px-8 transition-all duration-300"
+                      >
+                        <PhoneCall size={isMobile ? 16 : 18} className="mr-2" />
+                        Ligar Agora: (11) 94820-2927
+                      </Button>
+                    </a>
+                  </div>
+
+                  {/* Selos de segurança */}
+                  <div className="flex flex-wrap items-center gap-4 pt-4">
+                    {[
+                      { icon: "🔒", text: "Dados Protegidos" },
+                      { icon: "📋", text: "Garantia por Escrito" },
+                      { icon: "🏆", text: "Melhor Avaliado" },
+                    ].map((item, idx) => (
+                      <div key={idx} className="flex items-center gap-1.5">
+                        <span className="text-sm">{item.icon}</span>
+                        <span className="text-[10px] sm:text-xs text-muted-foreground font-medium">
+                          {item.text}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </motion.div>
               </div>
-
-              <motion.div
-                {...fadeIn}
-                className="text-center mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-100"
-              >
-                <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-                  <a
-                    href="https://wa.me/5511948202927"
-                    className="w-full sm:w-auto"
-                  >
-                    <Button className="w-full bg-success hover:bg-success/90 text-white font-bold h-11 sm:h-12 px-6">
-                      <WhatsAppIcon size={isMobile ? 16 : 18} />
-                      Solicitar Orçamento Grátis
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </a>
-                  <Link href="/" className="w-full sm:w-auto">
-                    <Button
-                      variant="outline"
-                      className="w-full border-primary text-primary hover:bg-primary hover:text-white h-11 sm:h-12 px-6"
-                    >
-                      <Home className="w-4 h-4 mr-2" />
-                      Voltar para Home
-                    </Button>
-                  </Link>
-                </div>
-              </motion.div>
             </div>
           </section>
         </main>

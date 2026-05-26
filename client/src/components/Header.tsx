@@ -70,7 +70,7 @@ export default function Header() {
           aria-label="Página inicial"
         >
           <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663060650935/K9o8LWiVmPpHSveFtHmbjC/PROTEC-logo-Az8t4KFvrryvP5Cxu8BnLD.png"
+            src="/logo-protect-7.webp"
             alt="PROTEC - Segurança Eletrônica"
             className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto"
             width="120"
