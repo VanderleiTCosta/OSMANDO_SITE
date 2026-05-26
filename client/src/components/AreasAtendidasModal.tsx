@@ -1,8 +1,8 @@
-import React, { useState, useCallback, useMemo, useEffect } from 'react';
-import { useLocation } from 'wouter';
-import { X, MapPin, ChevronRight, ArrowLeft } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { SP_REGIONS, Regiao } from '../data/sp-regions';
+import React, { useState, useCallback, useMemo, useEffect } from "react";
+import { useLocation } from "wouter";
+import { X, MapPin, ChevronRight, ArrowLeft } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { SP_REGIONS, Regiao } from "../data/sp-regions";
 
 interface AreasAtendidasModalProps {
   isOpen: boolean;
@@ -16,7 +16,9 @@ const AreasAtendidasModal: React.FC<AreasAtendidasModalProps> = ({
   solucaoSlug,
 }) => {
   const [, setLocation] = useLocation();
-  const [regiaoSelecionada, setRegiaoSelecionada] = useState<Regiao | null>(null);
+  const [regiaoSelecionada, setRegiaoSelecionada] = useState<Regiao | null>(
+    null
+  );
   const [isMobile, setIsMobile] = useState(false);
 
   // Detecta dispositivo mobile
@@ -25,19 +27,19 @@ const AreasAtendidasModal: React.FC<AreasAtendidasModalProps> = ({
       setIsMobile(window.innerWidth < 640);
     };
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   // Previne scroll do body quando modal está aberto
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isOpen]);
 
@@ -63,11 +65,14 @@ const AreasAtendidasModal: React.FC<AreasAtendidasModalProps> = ({
   );
 
   // Fecha ao clicar no overlay
-  const handleOverlayClick = useCallback((e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) {
-      handleClose();
-    }
-  }, [handleClose]);
+  const handleOverlayClick = useCallback(
+    (e: React.MouseEvent) => {
+      if (e.target === e.currentTarget) {
+        handleClose();
+      }
+    },
+    [handleClose]
+  );
 
   return (
     <AnimatePresence>
@@ -84,14 +89,14 @@ const AreasAtendidasModal: React.FC<AreasAtendidasModalProps> = ({
           aria-labelledby="modal-title"
         >
           <motion.div
-            initial={{ y: '100%', opacity: 0 }}
+            initial={{ y: "100%", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: '100%', opacity: 0 }}
-            transition={{ 
-              type: 'spring', 
-              damping: 25, 
+            exit={{ y: "100%", opacity: 0 }}
+            transition={{
+              type: "spring",
+              damping: 25,
               stiffness: 300,
-              duration: 0.3
+              duration: 0.3,
             }}
             className="relative w-full sm:max-w-lg bg-card rounded-t-2xl sm:rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] sm:max-h-[85vh] border border-border"
           >
@@ -108,15 +113,21 @@ const AreasAtendidasModal: React.FC<AreasAtendidasModalProps> = ({
                   </button>
                 ) : (
                   <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary" aria-hidden="true" />
+                    <MapPin
+                      className="w-4 h-4 sm:w-5 sm:h-5 text-primary"
+                      aria-hidden="true"
+                    />
                   </div>
                 )}
-                <h2 id="modal-title" className="text-lg sm:text-xl font-bold text-card-foreground truncate">
-                  {regiaoSelecionada 
-                    ? isMobile 
-                      ? regiaoSelecionada.nome.split(' ')[0]
+                <h2
+                  id="modal-title"
+                  className="text-lg sm:text-xl font-bold text-card-foreground truncate"
+                >
+                  {regiaoSelecionada
+                    ? isMobile
+                      ? regiaoSelecionada.nome.split(" ")[0]
                       : `Bairros na ${regiaoSelecionada.nome}`
-                    : 'Atendimento em SP'}
+                    : "Atendimento em SP"}
                 </h2>
               </div>
               <button
@@ -149,7 +160,8 @@ const AreasAtendidasModal: React.FC<AreasAtendidasModalProps> = ({
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-[10px] sm:text-xs text-gray-400">
-                          {regiao.bairros.length} {regiao.bairros.length === 1 ? 'bairro' : 'bairros'}
+                          {regiao.bairros.length}{" "}
+                          {regiao.bairros.length === 1 ? "bairro" : "bairros"}
                         </span>
                         <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-primary group-hover:translate-x-1 transition-all" />
                       </div>
@@ -164,7 +176,7 @@ const AreasAtendidasModal: React.FC<AreasAtendidasModalProps> = ({
                       {regiaoSelecionada.bairros.length} bairros atendidos
                     </p>
                   </div>
-                  
+
                   {regiaoSelecionada.bairros.map((bairro, index) => (
                     <motion.button
                       key={bairro.slug}
@@ -175,7 +187,9 @@ const AreasAtendidasModal: React.FC<AreasAtendidasModalProps> = ({
                       className="w-full text-left p-3 sm:p-3.5 rounded-lg border border-border hover:border-primary hover:bg-primary/5 hover:text-primary font-medium text-card-foreground transition-all focus:outline-none focus:ring-2 focus:ring-primary active:bg-primary/10"
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-sm sm:text-base">{bairro.nome}</span>
+                        <span className="text-sm sm:text-base">
+                          {bairro.nome}
+                        </span>
                         <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 group-hover:text-primary group-hover:translate-x-0.5 transition-transform" />
                       </div>
                     </motion.button>
@@ -186,13 +200,17 @@ const AreasAtendidasModal: React.FC<AreasAtendidasModalProps> = ({
 
             {/* Footer com CTA rápido (mobile) */}
             <div className="sticky bottom-0 p-4 border-t border-border bg-card sm:hidden">
-              <a href="https://wa.me/5511948202927" className="block">
+              <a href="https://wa.me/5511937724242" className="block">
                 <button className="w-full py-3 bg-success text-white font-bold rounded-lg flex items-center justify-center gap-2 text-sm active:scale-98 transition-transform">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path d="M12.032 2.001c-5.516 0-10 4.484-10 10 0 1.852.505 3.589 1.383 5.086L2.001 22l5.003-1.315c1.472.848 3.145 1.316 5.028 1.316 5.516 0 10-4.484 10-10s-4.484-10-10-10z" />
                   </svg>
-                                  Falar com Especialista
-                                </button>
+                  Falar com Especialista
+                </button>
               </a>
             </div>
           </motion.div>

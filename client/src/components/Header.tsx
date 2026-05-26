@@ -49,13 +49,13 @@ export default function Header() {
       <div className="bg-primary text-white py-2 px-3 text-center text-[11px] font-bold uppercase tracking-wider md:text-xs md:tracking-widest">
         <span className="inline-block md:hidden">
           🚨 Emergência 24h —{" "}
-          <a href="tel:+5511948202927" className="underline font-extrabold">
+          <a href="tel:+5511937724242" className="underline font-extrabold">
             Ligar
           </a>
         </span>
         <span className="hidden md:inline-block">
           Atendimento Emergencial 24h — São Paulo e Região —{" "}
-          <a href="tel:+5511948202927" className="underline hover:no-underline">
+          <a href="tel:+5511937724242" className="underline hover:no-underline">
             Ligue Agora
           </a>
         </span>
@@ -70,7 +70,7 @@ export default function Header() {
           aria-label="Página inicial"
         >
           <img
-            src="/logo-protect-7.webp"
+            src="/protec.png"
             alt="PROTEC - Segurança Eletrônica"
             className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto"
             width="120"
@@ -81,12 +81,12 @@ export default function Header() {
 
         {/* Desktop Navigation (lg+) */}
         <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-          {navItems.map((item) => (
+          {navItems.map(item => (
             <a
               key={item.label}
               href={item.href}
               className="text-sm font-semibold text-card-foreground hover:text-primary transition-colors uppercase tracking-tight relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full"
-              onClick={(e) => {
+              onClick={e => {
                 e.preventDefault();
                 document.querySelector(item.href)?.scrollIntoView({
                   behavior: "smooth",
@@ -100,18 +100,22 @@ export default function Header() {
 
         {/* Desktop CTA (md+) */}
         <div className="hidden md:flex items-center gap-2 lg:gap-3">
-          <a href="tel:+5511948202927" className="block">
+          <a href="tel:+5511937724242" className="block">
             <Button
               variant="outline"
               size="sm"
               className="font-bold border-primary text-white hover:bg-primary hover:text-white transition-all duration-300"
             >
               <Phone size={16} className="mr-2" />
-              <span className="hidden lg:inline">(11) 94820-2927</span>
+              <span className="hidden lg:inline">0800 591 9537</span>
               <span className="lg:hidden">Ligar</span>
             </Button>
           </a>
-          <a href="https://wa.me/5511948202927" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://wa.me/5511937724242"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Button
               size="sm"
               variant="outline"
@@ -129,7 +133,7 @@ export default function Header() {
         {/* Mobile Actions */}
         <div className="flex md:hidden items-center gap-1">
           <a
-            href="tel:+5511948202927"
+            href="tel:+5511937724242"
             className="p-2 text-primary active:bg-primary/10 rounded-full transition-colors"
             aria-label="Telefone"
           >
@@ -149,7 +153,7 @@ export default function Header() {
       {/* Mobile Navigation Menu */}
       <AnimatePresence>
         {isOpen && (
-            <motion.div
+          <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -172,17 +176,17 @@ export default function Header() {
               ))}
 
               <div className="flex flex-col gap-3 pt-6 mt-2 border-t border-muted">
-                <a href="tel:+5511948202927" className="w-full">
+                <a href="tel:+5511937724242" className="w-full">
                   <Button
                     variant="outline"
                     className="w-full h-11 font-bold border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300"
                   >
                     <Phone size={18} className="mr-2" />
-                    Ligar: (11) 94820-2927
+                    Ligar: 0800 591 9537
                   </Button>
                 </a>
                 <a
-                  href="https://wa.me/5511948202927"
+                  href="https://wa.me/5511937724242"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full"

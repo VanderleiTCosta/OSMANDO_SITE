@@ -58,7 +58,9 @@ export default function HeroSection() {
                 className="inline-flex items-center gap-1.5 bg-primary/30 backdrop-blur-sm border border-white/20 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-bold tracking-wide uppercase"
               >
                 <span className="animate-pulse">⚡</span>
-                <span className="hidden xs:inline">Atendimento Emergencial</span>
+                <span className="hidden xs:inline">
+                  Atendimento Emergencial
+                </span>
                 <span className="xs:hidden">Emergência 24h</span>
                 <span className="hidden sm:inline">24 Horas</span>
               </motion.div>
@@ -107,7 +109,7 @@ export default function HeroSection() {
               {/* CTA Buttons - Mobile First (botões empilhados) */}
               <div className="flex flex-col xs:flex-row gap-3 sm:gap-4 pt-4 sm:pt-6">
                 <motion.a
-                  href="https://wa.me/5511948202927"
+                  href="https://wa.me/5511937724242"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full xs:flex-1"
@@ -124,7 +126,7 @@ export default function HeroSection() {
                 </motion.a>
 
                 <motion.a
-                  href="tel:+5511948202927"
+                  href="tel:+5511937724242"
                   className="w-full xs:flex-1"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -148,7 +150,9 @@ export default function HeroSection() {
                 className="flex items-center justify-center xs:justify-start gap-3 sm:gap-4 pt-4 sm:pt-6"
               >
                 <div className="flex items-center gap-1">
-                  <span className="text-yellow-400 text-xs sm:text-sm">★★★★★</span>
+                  <span className="text-yellow-400 text-xs sm:text-sm">
+                    ★★★★★
+                  </span>
                   <span className="text-white/80 text-[10px] sm:text-xs">
                     (500+ avaliações)
                   </span>
@@ -171,7 +175,7 @@ export default function HeroSection() {
               <div className="relative rounded-xl overflow-hidden shadow-2xl">
                 {/* Efeito de brilho */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-secondary/30 to-primary/30 rounded-xl blur-xl -z-10" />
-                
+
                 {/* Badge flutuante */}
                 <div className="absolute top-4 right-4 z-10 bg-black/80 backdrop-blur-md rounded-full px-3 py-1.5 text-xs font-bold text-white border border-white/20">
                   <span className="animate-pulse mr-1">●</span>
@@ -202,8 +206,12 @@ export default function HeroSection() {
                     <span className="text-success text-lg">✓</span>
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-card-foreground">Sem taxa extra</p>
-                    <p className="text-[10px] text-muted-foreground">Orçamento gratuito</p>
+                    <p className="text-xs font-bold text-card-foreground">
+                      Sem taxa extra
+                    </p>
+                    <p className="text-[10px] text-muted-foreground">
+                      Orçamento gratuito
+                    </p>
                   </div>
                 </div>
               </motion.div>

@@ -142,7 +142,7 @@ export default function Footer() {
           >
             {/* Botão WhatsApp - Principal */}
             <a
-              href="https://wa.me/5511948202927"
+              href="https://wa.me/5511937724242"
               className="group w-full sm:w-auto transform transition-all duration-300 hover:scale-105"
             >
               <button className="relative overflow-hidden w-full px-6 sm:px-8 md:px-10 py-3.5 sm:py-4 md:py-5 bg-gradient-to-r from-success to-success/80 hover:from-success/90 hover:to-success text-white font-bold rounded-xl transition-all shadow-xl shadow-success/30 flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base md:text-lg group-hover:shadow-2xl">
@@ -160,7 +160,7 @@ export default function Footer() {
 
             {/* Botão Telefone - Secundário */}
             <a
-              href="tel:+5511948202927"
+              href="tel:+5511937724242"
               className="group w-full sm:w-auto transform transition-all duration-300 hover:scale-105"
             >
               <button className="w-full px-6 sm:px-8 md:px-10 py-3.5 sm:py-4 md:py-5 bg-card/40 hover:bg-card/60 backdrop-blur-sm text-white font-bold rounded-xl transition-all border-2 border-border hover:border-primary/50 flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base md:text-lg group-hover:shadow-xl">
@@ -169,7 +169,7 @@ export default function Footer() {
                   className="transition-transform group-hover:scale-110"
                 />
                 <span className="whitespace-nowrap">
-                  Ligar Agora: (11) 94820-2927
+                  Ligar Agora: 0800 591 9537
                 </span>
               </button>
             </a>
@@ -231,7 +231,7 @@ export default function Footer() {
                 <Instagram size={18} />
               </a>
               <a
-                href="https://wa.me/5511948202927"
+                href="https://wa.me/5511937724242"
                 className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 hover:bg-secondary hover:text-white flex items-center justify-center transition-all duration-300 active:scale-95"
                 aria-label="WhatsApp"
               >
@@ -305,7 +305,7 @@ export default function Footer() {
                 >
                   <li>
                     <a
-                      href="tel:+5511948202927"
+                      href="tel:+5511937724242"
                       className="hover:text-primary transition-colors flex items-start gap-3 active:text-primary"
                     >
                       <Phone
@@ -313,7 +313,7 @@ export default function Footer() {
                         className="text-primary shrink-0 mt-0.5"
                       />
                       <div>
-                        <span>(11) 94820-2927</span>
+                        <span>0800 591 9537</span>
                         <br />
                         <span className="text-[9px] sm:text-[10px] text-white/40">
                           Atendimento 24 horas

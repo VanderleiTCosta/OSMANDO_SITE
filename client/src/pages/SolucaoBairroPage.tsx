@@ -459,7 +459,7 @@ const SolucaoBairroPage: React.FC = () => {
                   {/* Botões CTA */}
                   <div className="flex flex-col xs:flex-row gap-3 sm:gap-4 justify-center items-center pt-4 sm:pt-6">
                     <a
-                      href={`https://wa.me/5511948202927?text=${encodeURIComponent(whatsappMessage)}`}
+                      href={`https://wa.me/5511937724242?text=${encodeURIComponent(whatsappMessage)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full xs:w-auto"
@@ -469,7 +469,7 @@ const SolucaoBairroPage: React.FC = () => {
                         <span className="whitespace-nowrap">WhatsApp 24h</span>
                       </Button>
                     </a>
-                    <a href="tel:+5511948202927" className="w-full xs:w-auto">
+                    <a href="tel:+5511937724242" className="w-full xs:w-auto">
                       <Button
                         variant="outline"
                         className="w-full border-white text-white hover:bg-white hover:text-primary font-bold flex items-center justify-center gap-2 h-11 sm:h-14 px-4 sm:px-6 md:px-8 text-sm sm:text-base md:text-lg transition-all duration-300"
@@ -783,7 +783,7 @@ const SolucaoBairroPage: React.FC = () => {
                 className="text-center mt-12 sm:mt-16"
               >
                 <a
-                  href={`https://wa.me/5511948202927?text=${encodeURIComponent(whatsappMessage)}`}
+                  href={`https://wa.me/5511937724242?text=${encodeURIComponent(whatsappMessage)}`}
                 >
                   <Button className="group relative overflow-hidden bg-white text-primary hover:bg-white/90 font-bold h-12 sm:h-14 px-8 sm:px-12 text-base sm:text-lg shadow-2xl transition-all duration-300">
                     <span className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-transparent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
@@ -950,7 +950,7 @@ const SolucaoBairroPage: React.FC = () => {
 
                 <div className="flex flex-col xs:flex-row justify-center gap-3 sm:gap-4 mb-8">
                   <a
-                    href={`https://wa.me/5511948202927?text=${encodeURIComponent(whatsappMessage)}`}
+                    href={`https://wa.me/5511937724242?text=${encodeURIComponent(whatsappMessage)}`}
                     className="w-full xs:w-auto"
                   >
                     <Button className="group relative overflow-hidden w-full bg-gradient-to-r from-success to-success/80 hover:from-success/90 hover:to-success text-white font-bold h-12 sm:h-14 px-6 sm:px-8 shadow-lg transition-all duration-300 group-hover:shadow-xl">
@@ -963,13 +963,13 @@ const SolucaoBairroPage: React.FC = () => {
                       <ArrowRight className="ml-2 w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </a>
-                  <a href="tel:+5511948202927" className="w-full xs:w-auto">
+                  <a href="tel:+5511937724242" className="w-full xs:w-auto">
                     <Button
                       variant="outline"
                       className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold h-12 sm:h-14 px-6 sm:px-8 transition-all duration-300"
                     >
                       <Phone size={isMobile ? 16 : 18} className="mr-2" />
-                      (11) 94820-2927
+                      0800 591 9537
                     </Button>
                   </a>
                 </div>
