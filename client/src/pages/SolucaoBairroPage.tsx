@@ -1,4 +1,4 @@
-// SolucaoBairroPage.tsx - Mobile First + Profissional (padrão consistente com SolucaoPage)
+// SolucaoBairroPage.tsx - Mobile First + SEO Local Dinâmico (Exact Match Keyword Engine)
 import React, { useMemo, useState, useEffect } from "react";
 import { useParams, Link } from "wouter";
 import { Helmet } from "react-helmet";
@@ -6,7 +6,6 @@ import {
   CheckCircle,
   Phone,
   Home,
-  Zap,
   MapPin,
   Clock,
   ShieldCheck,
@@ -18,15 +17,10 @@ import {
   Droplets,
   Trash2,
   AlertTriangle,
-  Filter,
   ArrowRight,
-  Headphones,
-  ClipboardList,
-  Medal,
-  Star,
-  ChevronRight,
   PhoneCall,
   DollarSign,
+  Search,
 } from "lucide-react";
 import Footer from "../components/Footer";
 import { SP_REGIONS } from "../data/sp-regions";
@@ -299,13 +293,81 @@ const SolucaoBairroPage: React.FC = () => {
     return { nome: fallbackName, regiao: "São Paulo" };
   }, [bairroSlug]);
 
+  // ENGINE INTELIGENTE DE PREPOSIÇÕES (SEO EXATO)
+  // Define dinamicamente se é "em Moema", "no Morumbi", "na Vila Mariana"
+  const preposicaoLocal = useMemo(() => {
+    const b = bairroData.nome.toLowerCase();
+    const usaEm = [
+      "moema", "tatuapé", "santana", "interlagos", "perdizes", "pinheiros", 
+      "jaú", "jau", "barueri", "osasco", "guarulhos", "campinas", "jundiaí", 
+      "itaquera", "pirituba", "suzano", "diadema", "mauá", "cotia"
+    ].some(x => b.includes(x) || b === x);
+    
+    const usaNa = [
+      "vila", "cidade", "chácara", "fazenda", "zona", "lapa", "mooca", "penha", 
+      "sé", "saúde", "consolação", "liberdade", "freguesia", "pedreira", "brasilândia",
+      "água", "pompéia", "casa verde", "bela vista"
+    ].some(x => b.includes(x)) || b.endsWith("a");
+
+    if (usaEm) return "em";
+    if (usaNa) return "na";
+    return "no";
+  }, [bairroData.nome]);
+
+  // A Palavra-Chave Exata Gerada: ex "Desentupidora em Moema" ou "Hidrojateamento no Morumbi"
+  const keywordExata = `${solucaoContent.tituloCompleto} ${preposicaoLocal} ${bairroData.nome}`;
+
   const localizedDescription = useMemo(
     () =>
-      `${solucaoContent.tituloCompleto} em ${bairroData.nome} com atendimento 24h. ${solucaoContent.descricaoCurta}`,
-    [solucaoContent, bairroData]
+      `Serviço especializado de ${keywordExata} com atendimento 24h. ${solucaoContent.descricaoCurta}`,
+    [keywordExata, solucaoContent]
   );
 
-  const whatsappMessage = `Preciso de ${solucaoContent.tituloCompleto.toLowerCase()} urgente no bairro ${bairroData.nome}`;
+  const whatsappMessage = `Preciso urgente de ${solucaoContent.tituloCompleto.toLowerCase()} ${preposicaoLocal} ${bairroData.nome}`;
+
+  // Gerador Dinâmico de Textos com variações exatas para rankeamento orgânico
+  const seoContent = useMemo(() => {
+    const srv = solucaoContent.tituloCompleto;
+    const brr = bairroData.nome;
+    const prep = preposicaoLocal;
+    
+    return {
+      title: `Especialistas: ${keywordExata}`,
+      paragraph: `O Grupo Protec é a sua melhor escolha quando se trata de buscas por <strong>${srv.toLowerCase()} ${prep} ${brr}</strong>. Compreendemos a urgência que problemas hidráulicos exigem, por isso mantemos equipes de prontidão 24 horas por dia. Se você precisa de <strong>${keywordExata}</strong> ou nas imediações, garantimos um tempo de resposta de até 40 minutos, levando tecnologia de ponta que resolve o bloqueio sem quebrar seus pisos ou azulejos. Priorizamos a transparência total, emitindo nota fiscal e oferecendo garantia por escrito para sua máxima tranquilidade estrutural e financeira.`,
+      list: [
+        `Procurando por <strong>${keywordExata.toLowerCase()}</strong>? Nossa equipe atua com viaturas próprias e atendimento imediato, oferecendo preço justo para emergências.`,
+        `Para quem precisa de <strong>${srv.toLowerCase()} ${prep} ${brr}</strong>, contamos com técnicos altamente qualificados que entregam orçamento sem compromisso no local.`,
+        `Atendemos chamados de <strong>${keywordExata.toLowerCase()}</strong> com maquinário moderno, proporcionando um serviço limpo, rápido e com pagamento facilitado no cartão.`,
+        `Precisou de urgência? Nosso plantão de <strong>${srv.toLowerCase()} ${prep} ${brr}</strong> chega rapidamente para solucionar a obstrução com segurança e laudo técnico.`,
+        `Especialistas locais em <strong>${keywordExata.toLowerCase()}</strong> prontos para diagnosticar a raiz do problema, protegendo sua estrutura e evitando gastos futuros desnecessários.`
+      ]
+    };
+  }, [solucaoContent.tituloCompleto, bairroData.nome, preposicaoLocal, keywordExata]);
+
+  // Schema.org Otimizado para Local SEO com Keyword Exata
+  const schemaMarkup = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": keywordExata,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Grupo Protec",
+      "image": "https://www.grupoprotec.com.br/logo.webp",
+      "telephone": "+5511937724242",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      }
+    },
+    "areaServed": {
+      "@type": "Neighborhood",
+      "name": bairroData.nome
+    },
+    "description": localizedDescription
+  }), [keywordExata, bairroData.nome, localizedDescription]);
 
   const bairrosProximos = [
     "Jardim Paulista",
@@ -327,7 +389,7 @@ const SolucaoBairroPage: React.FC = () => {
       step: "02",
       icon: <MapPin className="w-6 h-6 sm:w-7 sm:h-7" />,
       title: "Deslocamento",
-      desc: `Técnico mais próximo é acionado e chega em ${bairroData.nome} em até 40 minutos`,
+      desc: `Técnico mais próximo é acionado e chega ${preposicaoLocal} ${bairroData.nome} em até 40 minutos`,
     },
     {
       step: "03",
@@ -346,8 +408,11 @@ const SolucaoBairroPage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>{`${solucaoContent.tituloCompleto} em ${bairroData.nome} - SP | Atendimento 24h | PROTEC`}</title>
+        <title>{`${keywordExata} | Atendimento 24h | PROTEC`}</title>
         <meta name="description" content={localizedDescription} />
+        <script type="application/ld+json">
+          {JSON.stringify(schemaMarkup)}
+        </script>
       </Helmet>
 
       <div className="min-h-screen selection:bg-secondary/30 flex flex-col overflow-x-hidden">
@@ -364,7 +429,6 @@ const SolucaoBairroPage: React.FC = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 md:bg-gradient-to-r md:from-black/80 md:via-black/50 md:to-transparent" />
 
-            {/* Botões flutuantes */}
             <div className="absolute top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 z-20 flex flex-wrap justify-between items-center gap-3">
               <Link href="/">
                 <Button
@@ -390,16 +454,10 @@ const SolucaoBairroPage: React.FC = () => {
               </Link>
             </div>
 
-            {/* Breadcrumb */}
             <div className="absolute top-16 left-4 right-4 sm:top-20 sm:left-6 sm:right-6 z-20 flex flex-wrap items-center gap-1 sm:gap-2 text-[10px] sm:text-xs text-white/60">
-              <Link href="/" className="hover:text-white transition">
-                Início
-              </Link>
+              <Link href="/" className="hover:text-white transition">Início</Link>
               <span>/</span>
-              <Link
-                href={`/solucoes/${solucaoSlug}`}
-                className="hover:text-white transition truncate max-w-[100px] sm:max-w-none"
-              >
+              <Link href={`/solucoes/${solucaoSlug}`} className="hover:text-white transition truncate max-w-[100px] sm:max-w-none">
                 {solucaoContent.tituloCompleto}
               </Link>
               <span>/</span>
@@ -408,7 +466,6 @@ const SolucaoBairroPage: React.FC = () => {
               </span>
             </div>
 
-            {/* Conteúdo Principal */}
             <div className="container relative z-10 px-4 py-16 sm:py-20 md:py-24">
               <div className="max-w-4xl mx-auto text-center">
                 <motion.div
@@ -417,7 +474,6 @@ const SolucaoBairroPage: React.FC = () => {
                   transition={{ duration: 0.6 }}
                   className="text-white space-y-4 sm:space-y-6"
                 >
-                  {/* Badge */}
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -428,11 +484,11 @@ const SolucaoBairroPage: React.FC = () => {
                     <span>Atendimento 24h na {bairroData.regiao}</span>
                   </motion.div>
 
-                  {/* Título */}
+                  {/* Título com a palavra-chave exata! */}
                   <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                    {solucaoContent.tituloCompleto} em{" "}
+                    {solucaoContent.tituloCompleto}{" "}
                     <span className="text-primary relative inline-block">
-                      {bairroData.nome}
+                      {preposicaoLocal} {bairroData.nome}
                       <svg
                         className="absolute -bottom-2 left-0 w-full h-1 sm:h-2"
                         viewBox="0 0 100 10"
@@ -449,14 +505,12 @@ const SolucaoBairroPage: React.FC = () => {
                     </span>
                   </h1>
 
-                  {/* Descrição */}
                   <p className="text-sm xs:text-base sm:text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto px-2">
                     {isMobile
                       ? localizedDescription.slice(0, 120) + "..."
                       : localizedDescription}
                   </p>
 
-                  {/* Botões CTA */}
                   <div className="flex flex-col xs:flex-row gap-3 sm:gap-4 justify-center items-center pt-4 sm:pt-6">
                     <a
                       href={`https://wa.me/5511937724242?text=${encodeURIComponent(whatsappMessage)}`}
@@ -480,10 +534,9 @@ const SolucaoBairroPage: React.FC = () => {
                     </a>
                   </div>
 
-                  {/* Features Chips */}
                   <div className="flex flex-wrap justify-center gap-2 sm:gap-3 pt-6 sm:pt-8">
                     {[
-                      `24h em ${bairroData.nome}`,
+                      `24h ${preposicaoLocal} ${bairroData.nome}`,
                       "40min de resposta",
                       "Orçamento Grátis",
                       "Garantia por Escrito",
@@ -509,7 +562,7 @@ const SolucaoBairroPage: React.FC = () => {
             </div>
           </section>
 
-          {/* Benefícios Grid - Mobile First */}
+          {/* Benefícios Grid */}
           <section className="py-12 sm:py-16 md:py-20 lg:py-32 bg-muted/5">
             <div className="container px-4 sm:px-6">
               <motion.div
@@ -519,7 +572,7 @@ const SolucaoBairroPage: React.FC = () => {
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">
                   Vantagens do nosso{" "}
                   <span className="text-primary underline decoration-secondary decoration-4 underline-offset-4 sm:underline-offset-8">
-                    atendimento em {bairroData.nome}
+                    atendimento {preposicaoLocal} {bairroData.nome}
                   </span>
                 </h2>
                 <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
@@ -534,8 +587,7 @@ const SolucaoBairroPage: React.FC = () => {
                 viewport={{ once: true, margin: "-50px" }}
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
               >
-                {solucaoContent.beneficios.map(
-                  (beneficio: any, idx: number) => (
+                {solucaoContent.beneficios.map((beneficio: any, idx: number) => (
                     <motion.div
                       key={idx}
                       variants={fadeIn}
@@ -551,13 +603,12 @@ const SolucaoBairroPage: React.FC = () => {
                         {beneficio.descricao}
                       </p>
                     </motion.div>
-                  )
-                )}
+                ))}
               </motion.div>
             </div>
           </section>
 
-          {/* Seção de Sintomas e Diferencial */}
+          {/* Sinais de Alerta */}
           <section className="py-12 sm:py-16 md:py-20 lg:py-24">
             <div className="container px-4 sm:px-6 max-w-6xl mx-auto">
               <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12">
@@ -567,23 +618,16 @@ const SolucaoBairroPage: React.FC = () => {
                       <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                     </div>
                     <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-card-foreground">
-                      Sinais de Alerta em {bairroData.nome}
+                      Sinais de Alerta {preposicaoLocal} {bairroData.nome}
                     </h2>
                   </div>
                   <ul className="space-y-3 sm:space-y-4">
-                    {solucaoContent.sintomas
-                      .slice(0, 4)
-                      .map((sintoma: string, index: number) => (
-                        <li
-                          key={index}
-                          className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-card rounded-lg border border-border"
-                        >
+                    {solucaoContent.sintomas.slice(0, 4).map((sintoma: string, index: number) => (
+                        <li key={index} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-card rounded-lg border border-border">
                           <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-success mt-0.5 flex-shrink-0" />
                           <span className="text-xs sm:text-sm text-muted-foreground">
-                            <strong className="text-card-foreground">
-                              {sintoma}?
-                            </strong>{" "}
-                            Em {bairroData.nome}, resolvemos rápido.
+                            <strong className="text-card-foreground">{sintoma}?</strong>{" "}
+                            Resolvemos rápido {preposicaoLocal} {bairroData.nome}.
                           </span>
                         </li>
                       ))}
@@ -612,7 +656,7 @@ const SolucaoBairroPage: React.FC = () => {
                     <li className="flex items-start gap-2 sm:gap-3">
                       <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5" />
                       <span className="text-xs sm:text-sm text-muted-foreground">
-                        Chegada garantida em até 40 minutos em {bairroData.nome}
+                        Chegada garantida em até 40 minutos {preposicaoLocal} {bairroData.nome}
                       </span>
                     </li>
                     <li className="flex items-start gap-2 sm:gap-3">
@@ -629,12 +673,9 @@ const SolucaoBairroPage: React.FC = () => {
                     </li>
                   </ul>
 
-                  {/* Citação */}
                   <div className="mt-6 pt-4 border-t border-border">
                     <p className="text-muted-foreground italic text-xs sm:text-sm">
-                      "Compromisso com a qualidade e satisfação total do
-                      cliente. Trabalhamos com garantia por escrito em todos os
-                      serviços."
+                      "Compromisso com a qualidade e satisfação total do cliente. Trabalhamos com garantia por escrito em todos os serviços."
                     </p>
                     <p className="text-[10px] font-bold text-primary mt-2 uppercase tracking-wider">
                       — Equipe PROTEC
@@ -645,7 +686,58 @@ const SolucaoBairroPage: React.FC = () => {
             </div>
           </section>
 
-          {/* Metodologia - Como Funciona (mesmo padrão do SolucaoPage) */}
+          {/* SEO Local Dinâmico (Exact Keyword Match) */}
+          <section className="py-12 sm:py-16 md:py-20 bg-card border-y border-border">
+            <div className="container px-4 sm:px-6 max-w-5xl mx-auto">
+              <motion.div {...fadeIn} className="flex flex-col gap-6 sm:gap-8">
+                <header className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <Search className="w-5 h-5 text-primary" />
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-card-foreground">
+                    {seoContent.title}
+                  </h2>
+                </header>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-4">
+                    <ul className="space-y-3">
+                      {seoContent.list.map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-3 bg-muted/30 p-3 rounded-lg border border-border/50">
+                          <CheckCircle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                          <span 
+                            className="text-sm text-muted-foreground leading-relaxed"
+                            dangerouslySetInnerHTML={{ __html: item }}
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="bg-primary/5 p-6 rounded-2xl border border-primary/20 h-fit">
+                    <h3 className="text-lg font-bold text-card-foreground mb-4 flex items-center gap-2">
+                      <ShieldCheck className="w-5 h-5 text-primary" />
+                      Cobertura e Transparência
+                    </h3>
+                    <p 
+                      className="text-sm text-muted-foreground leading-relaxed text-justify"
+                      dangerouslySetInnerHTML={{ __html: seoContent.paragraph }}
+                    />
+                    <div className="mt-6 pt-4 border-t border-primary/20">
+                      <a href={`https://wa.me/5511937724242?text=${encodeURIComponent(whatsappMessage)}`}>
+                        <Button variant="outline" className="w-full border-primary/30 text-primary hover:bg-primary hover:text-white transition-colors">
+                          <WhatsAppIcon size={16} className="mr-2" />
+                          Falar com um Especialista
+                        </Button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Metodologia - Como Funciona */}
           <section
             id="como-funciona"
             className="relative py-16 sm:py-20 md:py-28 lg:py-36 bg-card/40 backdrop-blur-sm border-y border-border text-white overflow-hidden"
@@ -655,10 +747,7 @@ const SolucaoBairroPage: React.FC = () => {
             <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/10 rounded-full blur-3xl" />
 
             <div className="container relative z-10 px-4 sm:px-6">
-              <motion.div
-                {...fadeIn}
-                className="text-center mb-12 sm:mb-16 md:mb-20"
-              >
+              <motion.div {...fadeIn} className="text-center mb-12 sm:mb-16 md:mb-20">
                 <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm border border-primary/30 px-4 py-2 rounded-full mb-6">
                   <span className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
                   <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white/90">
@@ -668,19 +757,9 @@ const SolucaoBairroPage: React.FC = () => {
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
                   Como funciona nosso{" "}
                   <span className="text-primary relative inline-block">
-                    atendimento em {bairroData.nome}
-                    <svg
-                      className="absolute -bottom-2 left-0 w-full h-2"
-                      viewBox="0 0 100 10"
-                      preserveAspectRatio="none"
-                    >
-                      <path
-                        d="M0 5 L100 5"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeDasharray="5 5"
-                        className="text-primary/50"
-                      />
+                    atendimento {preposicaoLocal} {bairroData.nome}
+                    <svg className="absolute -bottom-2 left-0 w-full h-2" viewBox="0 0 100 10" preserveAspectRatio="none">
+                      <path d="M0 5 L100 5" stroke="currentColor" strokeWidth="2" strokeDasharray="5 5" className="text-primary/50" />
                     </svg>
                   </span>
                 </h2>
@@ -699,32 +778,20 @@ const SolucaoBairroPage: React.FC = () => {
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-50px" }}
-                      transition={{
-                        delay: idx * 0.15,
-                        duration: 0.6,
-                        ease: "easeOut",
-                      }}
+                      transition={{ delay: idx * 0.15, duration: 0.6, ease: "easeOut" }}
                       className="group relative"
                     >
                       <div className="relative h-full p-6 sm:p-7 md:p-8 rounded-2xl bg-card/60 backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-500 hover:transform hover:-translate-y-2">
                         <div className="absolute -top-3 -right-3 w-12 h-12 rounded-full bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-lg">
-                          <span className="text-white font-black text-sm sm:text-base">
-                            {item.step}
-                          </span>
+                          <span className="text-white font-black text-sm sm:text-base">{item.step}</span>
                         </div>
 
                         <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-white/20 to-white/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
                           <div className="text-white">{item.icon}</div>
                         </div>
 
-                        <h3 className="text-xl sm:text-2xl font-bold mb-3">
-                          {item.title}
-                        </h3>
-
-                        <p className="text-white/70 text-sm sm:text-base leading-relaxed">
-                          {item.desc}
-                        </p>
-
+                        <h3 className="text-xl sm:text-2xl font-bold mb-3">{item.title}</h3>
+                        <p className="text-white/70 text-sm sm:text-base leading-relaxed">{item.desc}</p>
                         <div className="mt-5 h-1 w-12 bg-secondary/50 rounded-full group-hover:w-full transition-all duration-500" />
                       </div>
                     </motion.div>
@@ -732,7 +799,6 @@ const SolucaoBairroPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Estatísticas de confiança */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -741,62 +807,29 @@ const SolucaoBairroPage: React.FC = () => {
               >
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
                   {[
-                    {
-                      value: "5.000+",
-                      label: "Serviços Realizados",
-                      icon: "✓",
-                    },
-                    {
-                      value: "40min",
-                      label: "Tempo Médio de Chegada",
-                      icon: "⚡",
-                    },
-                    {
-                      value: "24/7",
-                      label: "Disponibilidade Total",
-                      icon: "🕒",
-                    },
+                    { value: "5.000+", label: "Serviços Realizados", icon: "✓" },
+                    { value: "40min", label: "Tempo Médio de Chegada", icon: "⚡" },
+                    { value: "24/7", label: "Disponibilidade Total", icon: "🕒" },
                     { value: "100%", label: "Clientes Satisfeitos", icon: "★" },
                   ].map((stat, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: idx * 0.1 }}
-                      className="space-y-2"
-                    >
-                      <p className="text-2xl sm:text-3xl md:text-4xl font-black text-primary">
-                        {stat.value}
-                      </p>
-                      <p className="text-xs sm:text-sm text-white/60 font-medium uppercase tracking-wider">
-                        {stat.label}
-                      </p>
+                    <motion.div key={idx} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.1 }} className="space-y-2">
+                      <p className="text-2xl sm:text-3xl md:text-4xl font-black text-primary">{stat.value}</p>
+                      <p className="text-xs sm:text-sm text-white/60 font-medium uppercase tracking-wider">{stat.label}</p>
                     </motion.div>
                   ))}
                 </div>
               </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-center mt-12 sm:mt-16"
-              >
-                <a
-                  href={`https://wa.me/5511937724242?text=${encodeURIComponent(whatsappMessage)}`}
-                >
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mt-12 sm:mt-16">
+                <a href={`https://wa.me/5511937724242?text=${encodeURIComponent(whatsappMessage)}`}>
                   <Button className="group relative overflow-hidden bg-white text-primary hover:bg-white/90 font-bold h-12 sm:h-14 px-8 sm:px-12 text-base sm:text-lg shadow-2xl transition-all duration-300">
                     <span className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-transparent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
                     <WhatsAppIcon size={isMobile ? 20 : 24} className="mr-2" />
-                    <span className="relative z-10">
-                      Solicitar Agora em {bairroData.nome}
-                    </span>
+                    <span className="relative z-10">Solicitar Agora {preposicaoLocal} {bairroData.nome}</span>
                     <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </a>
-                <p className="text-white/50 text-xs sm:text-sm mt-4">
-                  *Orçamento gratuito sem compromisso
-                </p>
+                <p className="text-white/50 text-xs sm:text-sm mt-4">*Orçamento gratuito sem compromisso</p>
               </motion.div>
             </div>
           </section>
@@ -807,12 +840,10 @@ const SolucaoBairroPage: React.FC = () => {
               <motion.div {...fadeIn} className="text-center mb-8 sm:mb-12">
                 <div className="inline-flex items-center gap-2 bg-primary/10 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4">
                   <Wrench className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
-                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-primary">
-                    Tecnologia de Ponta
-                  </span>
+                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-primary">Tecnologia de Ponta</span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-card-foreground mb-3 sm:mb-4">
-                  Nossa Metodologia em {bairroData.nome}
+                  Nossa Metodologia {preposicaoLocal} {bairroData.nome}
                 </h2>
                 <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
                   {solucaoContent.diferencial}
@@ -820,26 +851,14 @@ const SolucaoBairroPage: React.FC = () => {
               </motion.div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                {solucaoContent.tecnicas
-                  .slice(0, 3)
-                  .map((tecnica: string, index: number) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-center gap-3 sm:gap-4 bg-card p-4 sm:p-5 rounded-xl shadow-sm border border-border hover:shadow-md transition-all group"
-                    >
+                {solucaoContent.tecnicas.slice(0, 3).map((tecnica: string, index: number) => (
+                    <motion.div key={index} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.1 }} className="flex items-center gap-3 sm:gap-4 bg-card p-4 sm:p-5 rounded-xl shadow-sm border border-border hover:shadow-md transition-all group">
                       <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-all duration-300">
                         <Wrench className="w-5 h-5 sm:w-6 sm:h-6 text-primary group-hover:text-white transition-all" />
                       </div>
                       <div>
-                        <h3 className="text-sm sm:text-base font-bold text-card-foreground">
-                          {tecnica}
-                        </h3>
-                        <p className="text-[10px] sm:text-xs text-muted-foreground">
-                          Equipamentos modernos
-                        </p>
+                        <h3 className="text-sm sm:text-base font-bold text-card-foreground">{tecnica}</h3>
+                        <p className="text-[10px] sm:text-xs text-muted-foreground">Equipamentos modernos</p>
                       </div>
                     </motion.div>
                   ))}
@@ -847,7 +866,7 @@ const SolucaoBairroPage: React.FC = () => {
             </div>
           </section>
 
-          {/* Bairros Próximos - Linkagem Interna */}
+          {/* Bairros Próximos */}
           <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-muted/5">
             <div className="container px-4 sm:px-6 max-w-5xl mx-auto">
               <motion.div {...fadeIn} className="text-center mb-6 sm:mb-8">
@@ -861,10 +880,7 @@ const SolucaoBairroPage: React.FC = () => {
 
               <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
                 {bairrosProximos.map((bairro, idx) => (
-                  <Link
-                    key={idx}
-                    href={`/solucoes/${solucaoSlug}/${bairro.toLowerCase().replace(/\s+/g, "-")}`}
-                  >
+                  <Link key={idx} href={`/solucoes/${solucaoSlug}/${bairro.toLowerCase().replace(/\s+/g, "-")}`}>
                     <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-card border border-border rounded-full text-[11px] sm:text-sm text-muted-foreground hover:bg-primary hover:text-white hover:border-primary transition-all cursor-pointer">
                       {bairro}
                     </span>
@@ -883,33 +899,22 @@ const SolucaoBairroPage: React.FC = () => {
                   { icon: "📋", text: "Garantia por Escrito" },
                   { icon: "🏆", text: "Melhor Avaliado" },
                   { icon: "⚡", text: "Atendimento 24h" },
-                  { icon: "📍", text: `Cobertura em ${bairroData.nome}` },
+                  { icon: "📍", text: `Cobertura ${preposicaoLocal} ${bairroData.nome}` },
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-center gap-2">
                     <span className="text-lg sm:text-xl">{item.icon}</span>
-                    <span className="text-[10px] sm:text-xs text-muted-foreground font-medium">
-                      {item.text}
-                    </span>
+                    <span className="text-[10px] sm:text-xs text-muted-foreground font-medium">{item.text}</span>
                   </div>
                 ))}
               </div>
             </div>
           </section>
 
-          {/* CTA Final Premium */}
-          {/* CTA Final - Padrão Dark (como a seção Quem Somos do SolucaoPage) */}
+          {/* CTA Final */}
           <section className="relative py-16 sm:py-20 md:py-28 lg:py-36 bg-card/20 backdrop-blur-sm border-y border-border overflow-hidden">
             <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
-
-            <div
-              className="absolute inset-0 opacity-10"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle, #1e293b 1px, transparent 1px)",
-                backgroundSize: "24px 24px",
-              }}
-            />
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle, #1e293b 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
 
             <div className="container relative z-10 px-4 sm:px-6 text-center max-w-4xl mx-auto">
               <motion.div {...fadeIn}>
@@ -919,55 +924,35 @@ const SolucaoBairroPage: React.FC = () => {
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
                   </span>
                   <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-primary">
-                    Atendimento 24h em {bairroData.nome}
+                    Atendimento 24h {preposicaoLocal} {bairroData.nome}
                   </span>
                 </div>
 
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-card-foreground mb-4">
                   Precisa de{" "}
                   <span className="text-primary relative inline-block">
-                    {solucaoContent.tituloCompleto} em {bairroData.nome}?
-                    <svg
-                      className="absolute -bottom-2 left-0 w-full h-3 -z-0"
-                      viewBox="0 0 100 10"
-                      preserveAspectRatio="none"
-                    >
-                      <path
-                        d="M0 5 L100 5"
-                        stroke="currentColor"
-                        strokeWidth="8"
-                        strokeLinecap="round"
-                        className="text-primary/20"
-                      />
+                    {keywordExata}?
+                    <svg className="absolute -bottom-2 left-0 w-full h-3 -z-0" viewBox="0 0 100 10" preserveAspectRatio="none">
+                      <path d="M0 5 L100 5" stroke="currentColor" strokeWidth="8" strokeLinecap="round" className="text-primary/20" />
                     </svg>
                   </span>
                 </h2>
 
                 <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-8 sm:mb-10 max-w-2xl mx-auto">
-                  Atendimento imediato em {bairroData.nome}. Ligue agora ou
-                  chame no WhatsApp!
+                  Atendimento imediato {preposicaoLocal} {bairroData.nome}. Ligue agora ou chame no WhatsApp!
                 </p>
 
                 <div className="flex flex-col xs:flex-row justify-center gap-3 sm:gap-4 mb-8">
-                  <a
-                    href={`https://wa.me/5511937724242?text=${encodeURIComponent(whatsappMessage)}`}
-                    className="w-full xs:w-auto"
-                  >
+                  <a href={`https://wa.me/5511937724242?text=${encodeURIComponent(whatsappMessage)}`} className="w-full xs:w-auto">
                     <Button className="group relative overflow-hidden w-full bg-gradient-to-r from-success to-success/80 hover:from-success/90 hover:to-success text-white font-bold h-12 sm:h-14 px-6 sm:px-8 shadow-lg transition-all duration-300 group-hover:shadow-xl">
                       <span className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-transparent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-                      <WhatsAppIcon
-                        size={isMobile ? 18 : 20}
-                        className="mr-2 relative z-10"
-                      />
+                      <WhatsAppIcon size={isMobile ? 18 : 20} className="mr-2 relative z-10" />
                       <span className="relative z-10">WhatsApp 24h</span>
                       <ArrowRight className="ml-2 w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </a>
                   <a href="tel:+5511937724242" className="w-full xs:w-auto">
-                    <Button
-                      variant="outline"
-                      className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold h-12 sm:h-14 px-6 sm:px-8 transition-all duration-300"
-                    >
+                    <Button variant="outline" className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold h-12 sm:h-14 px-6 sm:px-8 transition-all duration-300">
                       <Phone size={isMobile ? 16 : 18} className="mr-2" />
                       0800 591 9537
                     </Button>
@@ -984,9 +969,7 @@ const SolucaoBairroPage: React.FC = () => {
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-center gap-2">
                       <span className="text-sm sm:text-base">{item.icon}</span>
-                      <span className="text-[10px] sm:text-xs text-muted-foreground font-medium">
-                        {item.text}
-                      </span>
+                      <span className="text-[10px] sm:text-xs text-muted-foreground font-medium">{item.text}</span>
                     </div>
                   ))}
                 </div>
