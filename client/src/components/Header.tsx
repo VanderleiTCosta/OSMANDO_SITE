@@ -133,7 +133,7 @@ export default function Header() {
         {/* Mobile Actions */}
         <div className="flex md:hidden items-center gap-1">
           <a
-            href="tel:+5511937724242"
+            href="tel:08005919537"
             className="p-2 text-primary active:bg-primary/10 rounded-full transition-colors"
             aria-label="Telefone"
           >
@@ -176,7 +176,7 @@ export default function Header() {
               ))}
 
               <div className="flex flex-col gap-3 pt-6 mt-2 border-t border-muted">
-                <a href="tel:+5511937724242" className="w-full">
+                <a href="tel:08005919537" className="w-full">
                   <Button
                     variant="outline"
                     className="w-full h-11 font-bold border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300"
