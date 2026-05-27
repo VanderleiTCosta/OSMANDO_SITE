@@ -49,13 +49,13 @@ export default function Header() {
       <div className="bg-primary text-white py-2 px-3 text-center text-[11px] font-bold uppercase tracking-wider md:text-xs md:tracking-widest">
         <span className="inline-block md:hidden">
           🚨 Emergência 24h —{" "}
-          <a href="tel:+5511937724242" className="underline font-extrabold">
+          <a href="tel:08005919537" className="underline font-extrabold">
             Ligar
           </a>
         </span>
         <span className="hidden md:inline-block">
           Atendimento Emergencial 24h — São Paulo e Região —{" "}
-          <a href="tel:+5511937724242" className="underline hover:no-underline">
+          <a href="tel:08005919537" className="underline hover:no-underline">
             Ligue Agora
           </a>
         </span>
@@ -100,7 +100,7 @@ export default function Header() {
 
         {/* Desktop CTA (md+) */}
         <div className="hidden md:flex items-center gap-2 lg:gap-3">
-          <a href="tel:+5511937724242" className="block">
+          <a href="tel:08005919537" className="block">
             <Button
               variant="outline"
               size="sm"

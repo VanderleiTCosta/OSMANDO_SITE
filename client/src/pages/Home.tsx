@@ -650,7 +650,7 @@ export default function Home() {
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </a>
-                <a href="tel:+5511937724242" className="w-full sm:w-auto">
+                <a href="tel:08005919537" className="w-full sm:w-auto">
                   <Button
                     variant="outline"
                     className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold h-12 sm:h-14 px-6 sm:px-8 transition-all duration-300"
@@ -890,7 +890,7 @@ export default function Home() {
                       <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </a>
-                  <a href="tel:+5511937724242">
+                  <a href="tel:08005919537">
                     <Button
                       variant="outline"
                       className="border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold h-12 sm:h-14 px-6 sm:px-8 transition-all duration-300"

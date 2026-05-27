@@ -126,7 +126,7 @@ export default function HeroSection() {
                 </motion.a>
 
                 <motion.a
-                  href="tel:+5511937724242"
+                  href="tel:08005919537"
                   className="w-full xs:flex-1"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

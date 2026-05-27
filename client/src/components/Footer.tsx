@@ -160,7 +160,7 @@ export default function Footer() {
 
             {/* Botão Telefone - Secundário */}
             <a
-              href="tel:+5511937724242"
+              href="tel:08005919537"
               className="group w-full sm:w-auto transform transition-all duration-300 hover:scale-105"
             >
               <button className="w-full px-6 sm:px-8 md:px-10 py-3.5 sm:py-4 md:py-5 bg-card/40 hover:bg-card/60 backdrop-blur-sm text-white font-bold rounded-xl transition-all border-2 border-border hover:border-primary/50 flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base md:text-lg group-hover:shadow-xl">
@@ -305,7 +305,7 @@ export default function Footer() {
                 >
                   <li>
                     <a
-                      href="tel:+5511937724242"
+                      href="tel:08005919537"
                       className="hover:text-primary transition-colors flex items-start gap-3 active:text-primary"
                     >
                       <Phone

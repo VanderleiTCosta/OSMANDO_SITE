@@ -252,7 +252,7 @@ const SolucaoPage: React.FC = () => {
                       <MapPin size={isMobile ? 16 : 18} />
                       <span className="whitespace-nowrap">Ver Bairros</span>
                     </Button>
-                    <a href="tel:+5511937724242" className="w-full xs:w-auto">
+                    <a href="tel:08005919537" className="w-full xs:w-auto">
                       <Button
                         variant="outline"
                         className="w-full border-white text-white hover:bg-white hover:text-primary font-bold flex items-center justify-center gap-2 h-11 sm:h-14 px-4 sm:px-6 md:px-8 text-sm sm:text-base md:text-lg transition-all duration-300"
@@ -721,7 +721,7 @@ const SolucaoPage: React.FC = () => {
                         <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </a>
-                    <a href="tel:+5511937724242" className="w-full sm:w-auto">
+                    <a href="tel:08005919537" className="w-full sm:w-auto">
                       <Button
                         variant="outline"
                         className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold h-12 sm:h-14 px-6 sm:px-8 transition-all duration-300"
